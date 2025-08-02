@@ -1,6 +1,6 @@
-import CartWidget from './CartWidget';
+import { CartWidget } from './CartWidget';
 
-const NavBar = () => {
+export function NavBar() {
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary rounded" aria-label="Thirteenth navbar example">
       <div className="container-fluid">
@@ -21,6 +21,5 @@ const NavBar = () => {
       </div>
     </nav>
   );
-};
+}
 
-export default NavBar;
