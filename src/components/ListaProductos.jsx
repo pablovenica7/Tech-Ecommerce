@@ -5,7 +5,6 @@ export function ListaProductos() {
   const [productos, setProductos] = useState([]);
   const [cargando, setCargando] = useState(true);
 
-  // Simula fetch con promesa
   useEffect(() => {
     const obtenerProductos = new Promise((resolve) => {
       setTimeout(() => {
@@ -14,7 +13,7 @@ export function ListaProductos() {
           { id: 2, nombre: "Notebook Dell i7", precio: 720000 },
           { id: 3, nombre: "Monitor 27'' LG", precio: 250000 },
         ]);
-      }, 2000); // 2 segundos de demora simulada
+      }, 2000);
     });
 
     obtenerProductos
@@ -30,10 +29,10 @@ export function ListaProductos() {
   }, []);
 
   return (
-    <section className="container mt-5">
-      <h3>Productos Destacados</h3>
+    <section id="productos" className="container mt-5">
+      <h3 className="mb-4">Productos Destacados</h3>
       {cargando ? (
-        <p>Cargando productos...</p>
+        <p className="text-muted">Cargando productos...</p>
       ) : (
         productos.map((prod) => (
           <Producto key={prod.id} nombre={prod.nombre} precio={prod.precio} />
