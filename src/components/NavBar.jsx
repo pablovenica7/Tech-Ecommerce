@@ -11,7 +11,7 @@ export function NavBar() {
           <a className="navbar-brand col-lg-3 me-0" href="#">VEYOR</a>
           <ul className="navbar-nav col-lg-6 justify-content-lg-center">
             <li className="nav-item"><a className="nav-link active" href="#">Inicio</a></li>
-            <li className="nav-item"><a className="nav-link" href="#">Productos</a></li>
+            <li className="nav-item"><a className="nav-link" href="#">PCs de Escritorio</a></li>
             <li className="nav-item"><a className="nav-link" href="#">Contacto</a></li>
           </ul>
           <div className="d-lg-flex col-lg-3 justify-content-lg-end">
@@ -22,4 +22,5 @@ export function NavBar() {
     </nav>
   );
 }
+
 
