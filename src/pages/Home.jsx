@@ -21,7 +21,7 @@ export function Home() {
 
       <div className="text-center">
         <img
-          src="/src/assets/people-pc.png"
+          src="/src/assets/img-home.png"
           alt="Personas usando PC"
           className="img-fluid"
           style={{ maxWidth: "480px" }}
@@ -30,3 +30,4 @@ export function Home() {
     </section>
   );
 }
+
