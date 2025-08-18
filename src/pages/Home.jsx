@@ -1,17 +1,30 @@
 export function Home() {
   return (
-    <section className="container my-5 d-flex flex-column flex-md-row align-items-center justify-content-between">
-      <div className="text-center text-md-start mb-4 mb-md-0">
+    <section
+      className="d-flex flex-column flex-md-row align-items-center justify-content-between"
+      style={{
+        background: "linear-gradient(to right, #ff9a43, #ff6f00)",
+        minHeight: "100vh",
+        padding: "3rem",
+        color: "#fff",
+      }}
+    >
+      <div className="text-center text-md-start mb-5 mb-md-0">
         <h1 className="display-4 fw-bold">Tecnología que te potencia</h1>
-        <p className="lead text-muted">Tu próximo equipo está a un clic de distancia.</p>
-        <a href="/pcs" className="btn btn-dark mt-3 px-4 py-2">Ver PCs</a>
+        <p className="lead">
+          Equipos diseñados para maximizar tu rendimiento y creatividad.
+        </p>
+        <a href="/pcs" className="btn btn-light mt-3 px-4 py-2 fw-semibold">
+          Ver productos
+        </a>
       </div>
+
       <div className="text-center">
         <img
-          src="https://cdn.pixabay.com/photo/2014/05/02/21/50/home-office-336377_960_720.jpg"
-          alt="PC de escritorio"
-          className="img-fluid rounded shadow"
-          style={{ maxWidth: '450px' }}
+          src="/src/assets/people-pc.png"
+          alt="Personas usando PC"
+          className="img-fluid"
+          style={{ maxWidth: "480px" }}
         />
       </div>
     </section>
