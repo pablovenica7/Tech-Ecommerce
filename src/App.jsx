@@ -1,25 +1,21 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { NavBar } from './components/NavBar';
-import { ItemListContainer } from './components/ItemListContainer';
 import { Footer } from './components/Footer';
-import { ListaProductos } from './components/ListaProductos';
-import { Contador } from './components/Contador';
+import { Home } from './pages/Home';
+import { Pcs } from './pages/Pcs';
+import { Contacto } from './pages/Contacto';
 
 function App() {
   return (
-    <>
+    <BrowserRouter>
       <NavBar />
-      <header className="hero-section d-flex align-items-center justify-content-center text-center">
-        <div>
-          <h1 className="display-4 fw-bold">Tecnología que te potencia</h1>
-          <p className="lead text-muted">Equipos de alto rendimiento para quienes van más allá.</p>
-          <a href="#productos" className="btn btn-dark mt-3 px-4 py-2">Ver productos</a>
-        </div>
-      </header>
-      <ItemListContainer mensaje="¡Bienvenido a VEYOR!" />
-      <ListaProductos />
-      <Contador />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/pcs" element={<Pcs />} />
+        <Route path="/contacto" element={<Contacto />} />
+      </Routes>
       <Footer />
-    </>
+    </BrowserRouter>
   );
 }
 
