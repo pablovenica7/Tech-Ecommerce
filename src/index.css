@@ -1,46 +1,56 @@
-/* === Estilos personalizados para NavBar === */
+/* NavBar */
+.custom-navbar .navbar-brand,
+.custom-navbar .nav-link {
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+  font-size: 0.95rem;
+}
+
 .custom-navbar {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
   backdrop-filter: blur(10px);
-  background-color: rgba(255, 255, 255, 0.15);
+  background-color: rgba(255, 136, 0, 0.4);
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   z-index: 1030;
 }
 
-.navbar .nav-link,
-.navbar .navbar-brand {
-  color: white !important;
-}
-
-/* === Body === */
+/* Body */
 body {
-  background-color: #ffad33; /* o el que estés usando */
-  background-image: radial-gradient(ellipse at top center, #ffc266, #ff9933 85%);
+  background-color: #ffb14d;
+  background-image: radial-gradient(circle at top left, #ffd39e, #ff8c1a 90%);
   margin: 0;
   padding: 0;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  padding-top: 70px;
 }
 
-/* === Títulos === */
-h1, h2, h3, h4 {
+/* Títulos */
+h1 {
+  font-weight: 700;
+  color: #000;
+}
+
+h2, h3, h4 {
   font-weight: 600;
-  color: #1a1a1a;
+  color: #555;
 }
 
-/* === Enlaces === */
+/* Enlaces */
 a {
   text-decoration: none;
 }
 
 a.nav-link {
-  color: #4b4b4b;
+  color: white !important;
   transition: color 0.3s ease;
 }
 
 a.nav-link:hover {
-  color: #000;
+  color: #e6e6e6 !important;
 }
 
-/* === Botones === */
+/* Botones */
 .btn-primary {
   background-color: #212529;
   border: none;
@@ -59,32 +69,32 @@ a.nav-link:hover {
   background-color: #495057;
 }
 
-/* === Cards === */
+.btn-home {
+  background-color: #fff;
+  color: #212529;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.btn-home:hover {
+  background-color: #f4f4f4;
+  transform: scale(1.02);
+}
+
+/* Cards */
 .card {
   border: 1px solid #dee2e6;
   border-radius: 0.5rem;
   background-color: #ffffff;
 }
 
-/* === Footer === */
+/* Footer */
 footer {
   background-color: #f1f1f1;
   border-top: 1px solid #dee2e6;
   font-size: 0.9rem;
   color: #6c757d;
 }
-
-.hero-section {
-  height: 70vh;
-  background: linear-gradient(to right, #f0f0f0, #e6e6e6);
-  padding: 2rem;
-}
-
-.hero-section h1 {
-  color: #1a1a1a;
-}
-
-.hero-section p {
-  color: #6c757d;
-}
-
