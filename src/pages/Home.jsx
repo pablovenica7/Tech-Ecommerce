@@ -1,22 +1,25 @@
 import "./Home.css";
-import personasImg from "../assets/img-home.png";
+import personas from "../assets/img-home.png";
 import { Link } from "react-router-dom";
 
 export function Home() {
   return (
-    <section className="hero-section">
-      <div className="hero-content">
+    <main className="hero-section fade-in">
+      <div className="hero-text">
         <h1>
-          Tecnología que te <span style={{ color: "#fff" }}>potencia</span>
+          Tecnología que te <span className="highlight">potencia</span>
         </h1>
         <h2>
           Soluciones modernas y eficientes para llevar tu rendimiento al siguiente nivel.
         </h2>
         <Link to="/pcs">
-          <button className="btn btn-home">Ver PCs de escritorio</button>
+          <button className="btn-cta">Ver PCs de escritorio</button>
         </Link>
       </div>
-      <img className="hero-img" src={personasImg} alt="Personas usando computadoras" />
-    </section>
+
+      <div className="hero-image">
+        <img src={personas} alt="Personas usando computadoras" className="hero-img" />
+      </div>
+    </main>
   );
 }
