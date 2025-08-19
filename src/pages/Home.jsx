@@ -1,33 +1,30 @@
+import "./Home.css";
+import personasImg from "../assets/img-home.png";
+import { Link } from "react-router-dom";
+
 export function Home() {
   return (
-    <section
-      className="d-flex flex-column flex-md-row align-items-center justify-content-between"
-      style={{
-        background: "linear-gradient(to right, #ff9a43, #ff6f00)",
-        minHeight: "100vh",
-        padding: "3rem",
-        color: "#fff",
-      }}
-    >
-      <div className="text-center text-md-start mb-5 mb-md-0">
-        <h1 className="display-4 fw-bold">Tecnología que te potencia</h1>
-        <p className="lead">
-          Equipos diseñados para maximizar tu rendimiento y creatividad.
-        </p>
-        <a href="/pcs" className="btn btn-light mt-3 px-4 py-2 fw-semibold">
-          Ver productos
-        </a>
-      </div>
-
-      <div className="text-center">
-        <img
-          src="/src/assets/img-home.png"
-          alt="Personas usando PC"
-          className="img-fluid"
-          style={{ maxWidth: "480px" }}
-        />
+    <section className="hero-section d-flex align-items-center min-vh-100">
+      <div className="container">
+        <div className="row align-items-center">
+          <div className="col-lg-6 text-start">
+            <h1 className="mb-4">Tecnología que te potencia</h1>
+            <p className="lead mb-4">
+              Descubrí la nueva generación de computadoras de alto rendimiento para profesionales y entusiastas.
+            </p>
+            <Link to="/pcs" className="btn btn-warning btn-lg">
+              Ver PCs de Escritorio
+            </Link>
+          </div>
+          <div className="col-lg-6 text-center">
+            <img
+              src={personasImg}
+              alt="Personas usando computadoras"
+              className="img-fluid"
+            />
+          </div>
+        </div>
       </div>
     </section>
   );
 }
-
