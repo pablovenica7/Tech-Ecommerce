@@ -1,5 +1,6 @@
-import { CartWidget } from './CartWidget';
 import { Link } from 'react-router-dom';
+import { CartWidget } from './CartWidget';
+import logo from '../assets/logo_navbar.png';
 
 export function NavBar() {
   return (
@@ -9,7 +10,9 @@ export function NavBar() {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse d-lg-flex" id="navbarsExample11">
-          <Link className="navbar-brand col-lg-3 me-0" to="/">VEYOR</Link>
+          <Link className="navbar-brand col-lg-3 me-0" to="/">
+            <img src={logo} alt="Logo VEYOR" height="40" />
+          </Link>
           <ul className="navbar-nav col-lg-6 justify-content-lg-center">
             <li className="nav-item"><Link className="nav-link" to="/">Inicio</Link></li>
             <li className="nav-item"><Link className="nav-link" to="/pcs">PCs de Escritorio</Link></li>
@@ -23,4 +26,3 @@ export function NavBar() {
     </nav>
   );
 }
-
