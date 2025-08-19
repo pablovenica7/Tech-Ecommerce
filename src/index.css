@@ -1,10 +1,23 @@
-/* === Reset básico === */
+/* === Estilos personalizados para NavBar === */
+.custom-navbar {
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.15);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  z-index: 1030;
+}
+
+.navbar .nav-link,
+.navbar .navbar-brand {
+  color: white !important;
+}
+
+/* === Body === */
 body {
+  background-color: #ffad33; /* o el que estés usando */
+  background-image: radial-gradient(ellipse at top center, #ffc266, #ff9933 85%);
   margin: 0;
   padding: 0;
   font-family: 'Segoe UI', sans-serif;
-  background-color: #f9f9f9;
-  color: #212529;
 }
 
 /* === Títulos === */
