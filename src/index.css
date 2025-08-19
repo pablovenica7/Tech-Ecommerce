@@ -1,24 +1,25 @@
 /* NavBar */
+.custom-navbar {
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.15);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  z-index: 1030;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
 .custom-navbar .navbar-brand,
 .custom-navbar .nav-link {
+  color: white !important;
   padding-top: 0.3rem;
   padding-bottom: 0.3rem;
   font-size: 0.95rem;
 }
 
-.custom-navbar {
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
-  backdrop-filter: blur(10px);
-  background-color: rgba(255, 136, 0, 0.4);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  z-index: 1030;
-}
-
-/* Body */
+/* Reset básico */
 body {
-  background-color: #ffb14d;
-  background-image: radial-gradient(circle at top left, #ffd39e, #ff8c1a 90%);
+  background-color: #ff9f33;
+  background-image: radial-gradient(circle at top left, #ffc074, #e67300 90%);
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
@@ -33,7 +34,7 @@ h1 {
 
 h2, h3, h4 {
   font-weight: 600;
-  color: #555;
+  color: #444;
 }
 
 /* Enlaces */
@@ -42,12 +43,12 @@ a {
 }
 
 a.nav-link {
-  color: white !important;
+  color: #ffffff;
   transition: color 0.3s ease;
 }
 
 a.nav-link:hover {
-  color: #e6e6e6 !important;
+  color: #ddd;
 }
 
 /* Botones */
@@ -67,21 +68,6 @@ a.nav-link:hover {
 
 .btn-danger:hover {
   background-color: #495057;
-}
-
-.btn-home {
-  background-color: #fff;
-  color: #212529;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-}
-
-.btn-home:hover {
-  background-color: #f4f4f4;
-  transform: scale(1.02);
 }
 
 /* Cards */
