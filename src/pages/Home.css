@@ -1,50 +1,39 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
-.home-container {
-  min-height: 100vh;
+.hero-section {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 5rem 8%;
-  background-color: #ff6600;
-  background-image: radial-gradient(circle at top left, #ff944d 0%, #ff6600 40%, #cc5200 100%);
+  min-height: 100vh;
+  padding: 0 5%;
+  background: radial-gradient(circle at top left, #ffa94d, #cc6600 90%);
   color: white;
 }
 
-.home-texto {
+.hero-content {
   max-width: 50%;
 }
 
-.home-texto h1 {
-  font-size: 3.5rem;
+.hero-content h1 {
+  font-size: 3rem;
   font-weight: bold;
-  margin-bottom: 1.5rem;
+  color: #000;
 }
 
-.home-texto p {
-  font-size: 1.2rem;
-  line-height: 1.6;
-  color: #fff2e6;
-  margin-bottom: 2rem;
+.hero-content h2 {
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: #eaeaea;
+  margin: 1rem 0 2rem;
 }
 
-.home-texto a {
-  background-color: #fff;
-  color: #cc5200;
-  padding: 0.8rem 1.5rem;
-  border-radius: 50px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: 0.3s;
-}
-
-.home-texto a:hover {
-  background-color: #ffe0cc;
-  color: #cc5200;
-}
-
-.home-img img {
-  width: 100%;
+.hero-img {
+  width: 40%;
   max-width: 500px;
-  height: auto;
+}
+
+.hero-btn {
+  padding: 12px 24px;
+  font-size: 1rem;
+  border-radius: 30px;
 }
