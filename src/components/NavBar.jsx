@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export function NavBar() {
   return (
-    <nav className="navbar navbar-expand-lg bg-body-tertiary rounded">
+    <nav className="navbar navbar-expand-lg bg-transparent custom-navbar fixed-top">
       <div className="container-fluid">
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample11" aria-controls="navbarsExample11" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
@@ -23,3 +23,4 @@ export function NavBar() {
     </nav>
   );
 }
+
