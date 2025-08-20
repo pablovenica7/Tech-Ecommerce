@@ -1,11 +1,24 @@
 /* NavBar */
 .custom-navbar {
-  backdrop-filter: blur(10px);
-  background-color: rgba(255, 255, 255, 0.15);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  z-index: 1030;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
   padding-top: 0.1rem;
   padding-bottom: 0.1rem;
+  transition: background 0.3s ease, backdrop-filter 0.3s ease;
+}
+
+.custom-navbar.scrolled {
+  background: rgba(255, 255, 255, 0.15) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+.custom-navbar .navbar-collapse,
+.custom-navbar .navbar-toggler {
+  background: transparent !important;
+  border: none !important;
 }
 
 .custom-navbar .navbar-brand,
@@ -20,7 +33,7 @@
   height: 70px;
 }
 
-/* Body */
+/* Reset básico */
 body {
   background-color: #ff9f33;
   background-image: radial-gradient(circle at top left, #ffc074, #e67300 90%);
