@@ -4,19 +4,23 @@
   background-color: rgba(255, 255, 255, 0.15);
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   z-index: 1030;
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
+  padding-top: 0.1rem;
+  padding-bottom: 0.1rem;
 }
 
 .custom-navbar .navbar-brand,
 .custom-navbar .nav-link {
   color: white !important;
-  padding-top: 0.3rem;
-  padding-bottom: 0.3rem;
-  font-size: 0.95rem;
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
+  font-size: 0.9rem;
 }
 
-/* Reset básico */
+.logo-navbar {
+  height: 50px;
+}
+
+/* Body */
 body {
   background-color: #ff9f33;
   background-image: radial-gradient(circle at top left, #ffc074, #e67300 90%);
