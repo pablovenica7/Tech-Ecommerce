@@ -1,17 +1,27 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { CartWidget } from './CartWidget';
 import logo from '../assets/logo_navbar.png';
 
 export function NavBar() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
   return (
-    <nav className="navbar navbar-expand-lg bg-transparent custom-navbar fixed-top">
+    <nav className={`navbar navbar-expand-lg custom-navbar fixed-top ${scrolled ? 'scrolled' : ''}`}>
       <div className="container-fluid">
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample11" aria-controls="navbarsExample11" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse d-lg-flex" id="navbarsExample11">
           <Link className="navbar-brand col-lg-3 me-0" to="/">
-            <img src={logo} alt="Logo VEYOR" className="logo-navbar"/>
+            <img src={logo} alt="Logo VEYOR" className="logo-navbar" />
           </Link>
           <ul className="navbar-nav col-lg-6 justify-content-lg-center">
             <li className="nav-item"><Link className="nav-link" to="/">Inicio</Link></li>
@@ -26,4 +36,3 @@ export function NavBar() {
     </nav>
   );
 }
-
