@@ -112,29 +112,6 @@ export function Contacto() {
                   </div>
                 </div>
               </form>
-
-              <footer className="contact-meta mt-4">
-                <div className="row g-3">
-                  <div className="col-md-4">
-                    <div className="meta-item">
-                      <span className="meta-label">Email</span>
-                      <span className="meta-value">contacto@veyor.com</span>
-                    </div>
-                  </div>
-                  <div className="col-md-4">
-                    <div className="meta-item">
-                      <span className="meta-label">Teléfono</span>
-                      <span className="meta-value">+54 351 123 4567</span>
-                    </div>
-                  </div>
-                  <div className="col-md-4">
-                    <div className="meta-item">
-                      <span className="meta-label">Horario</span>
-                      <span className="meta-value">Lun a Vie · 9 a 18 hs</span>
-                    </div>
-                  </div>
-                </div>
-              </footer>
             </article>
           </div>
         </div>
@@ -142,3 +119,4 @@ export function Contacto() {
     </main>
   );
 }
+
