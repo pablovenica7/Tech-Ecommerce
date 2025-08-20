@@ -27,6 +27,7 @@
   font-size: 1.3rem;
   font-weight: 400;
   color: #f4f4f4;
+  margin-top: 1.5rem;
   margin-bottom: 1.5rem;
 }
 
@@ -69,3 +70,4 @@
   from { opacity: 0; }
   to { opacity: 1; }
 }
+
