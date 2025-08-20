@@ -125,3 +125,9 @@ footer {
   font-size: 0.9rem;
   color: #6c757d;
 }
+
+footer h5 {
+  color: #000;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
