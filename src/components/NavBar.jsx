@@ -11,7 +11,7 @@ export function NavBar() {
         </button>
         <div className="collapse navbar-collapse d-lg-flex" id="navbarsExample11">
           <Link className="navbar-brand col-lg-3 me-0" to="/">
-            <img src={logo} alt="Logo VEYOR" height="40" />
+            <img src={logo} alt="Logo VEYOR" className="logo-navbar"/>
           </Link>
           <ul className="navbar-nav col-lg-6 justify-content-lg-center">
             <li className="nav-item"><Link className="nav-link" to="/">Inicio</Link></li>
@@ -26,3 +26,4 @@ export function NavBar() {
     </nav>
   );
 }
+
