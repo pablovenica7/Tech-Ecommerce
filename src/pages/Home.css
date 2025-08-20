@@ -35,8 +35,8 @@
   background-color: #ffffff;
   color: #e67300;
   font-weight: 600;
-  padding: 12px 24px;
-  border-radius: 8px;
+  padding: 12px 32px;
+  border-radius: 999px;
   border: none;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   transition: all 0.3s ease;
@@ -70,3 +70,4 @@
   from { opacity: 0; }
   to { opacity: 1; }
 }
+
