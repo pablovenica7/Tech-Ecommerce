@@ -43,7 +43,7 @@
 }
 
 .btn-cta:hover {
-  background-color: #ffe6cc;
+  background-color: #ffdccc;
   transform: translateY(-2px);
 }
 
@@ -70,4 +70,3 @@
   from { opacity: 0; }
   to { opacity: 1; }
 }
-
