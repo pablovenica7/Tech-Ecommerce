@@ -1,122 +1,82 @@
-import { useRef } from "react";
 import "./Contacto.css";
+import Swal from "sweetalert2";
 
 export function Contacto() {
-  const formRef = useRef(null);
-
-  const handleSubmit = (e) => {
+  const onSubmit = (e) => {
     e.preventDefault();
-    const form = formRef.current;
+    const form = e.currentTarget;
 
-    if (!form.checkValidity()) {
-      form.reportValidity();
+    const nombre  = form.nombre?.value.trim()  || "";
+    const email   = form.email?.value.trim()   || "";
+    const mensaje = form.mensaje?.value.trim() || "";
+
+    if (!nombre || !email || !mensaje) {
+      Swal.fire({
+        icon: "error",
+        title: "Faltan campos por completar",
+        text: "Por favor llená todos los campos antes de enviar.",
+        confirmButtonText: "Entendido",
+      });
       return;
     }
 
-    alert("¡Mensaje enviado! Te responderemos a la brevedad.");
+    Swal.fire({
+      icon: "success",
+      title: "¡Mensaje enviado!",
+      text: "Te responderemos a la brevedad.",
+      confirmButtonText: "Listo",
+    });
+
     form.reset();
   };
 
   return (
     <main className="contacto-wrapper">
-      <section className="container">
-        <div className="row justify-content-center">
-          <div className="col-lg-10 col-xl-8">
-            <article className="contact-card shadow-lg">
-              <header className="mb-4 text-center">
-                <h1 className="contact-title">Contacto</h1>
-                <p className="contact-subtitle">
-                  Contanos qué necesitás y te respondemos en el día hábil.
-                </p>
-              </header>
-
-              <form ref={formRef} onSubmit={handleSubmit} noValidate>
-                <div className="row g-3">
-                  <div className="col-md-6">
-                    <div className="form-floating">
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="nombre"
-                        name="nombre"
-                        placeholder="Nombre y apellido"
-                        required
-                        minLength={3}
-                      />
-                      <label htmlFor="nombre">Nombre y apellido*</label>
-                    </div>
-                  </div>
-
-                  <div className="col-md-6">
-                    <div className="form-floating">
-                      <input
-                        type="email"
-                        className="form-control"
-                        id="email"
-                        name="email"
-                        placeholder="name@correo.com"
-                        required
-                      />
-                      <label htmlFor="email">Email*</label>
-                    </div>
-                  </div>
-
-                  <div className="col-md-6">
-                    <div className="form-floating">
-                      <input
-                        type="tel"
-                        className="form-control"
-                        id="telefono"
-                        name="telefono"
-                        placeholder="+54 351 000 0000"
-                        pattern="^[0-9+\s()-]{6,}$"
-                      />
-                      <label htmlFor="telefono">Teléfono (opcional)</label>
-                    </div>
-                  </div>
-
-                  <div className="col-md-6">
-                    <div className="form-floating">
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="asunto"
-                        name="asunto"
-                        placeholder="Tema del mensaje"
-                        required
-                        minLength={3}
-                      />
-                      <label htmlFor="asunto">Asunto*</label>
-                    </div>
-                  </div>
-
-                  <div className="col-12">
-                    <div className="form-floating">
-                      <textarea
-                        className="form-control h-120"
-                        id="mensaje"
-                        name="mensaje"
-                        placeholder="Tu mensaje"
-                        required
-                        minLength={10}
-                      />
-                      <label htmlFor="mensaje">Mensaje*</label>
-                    </div>
-                  </div>
-
-                  <div className="col-12 d-flex align-items-center justify-content-between mt-2">
-                    <small className="text-muted">*Campos obligatorios</small>
-                    <button type="submit" className="btn btn-dark btn-lg rounded-4 px-4">
-                      Enviar
-                    </button>
-                  </div>
-                </div>
-              </form>
-            </article>
+      <section className="container contacto-split">
+        <div className="row align-items-center g-5">
+          <div className="col-12 col-lg-6">
+            <form className="contact-form" onSubmit={onSubmit} noValidate>
+              <div className="form-line">
+                <input
+                  id="nombre"
+                  name="nombre"
+                  type="text"
+                  placeholder="Tu nombre"
+                />
+              </div>
+              <div className="form-line">
+                <input
+                  id="email"
+                  name="email"
+                  type="text"
+                  placeholder="Tu email"
+                />
+              </div>
+              <div className="form-line">
+                <textarea
+                  id="mensaje"
+                  name="mensaje"
+                  placeholder="Contanos tu consulta"
+                />
+              </div>
+              <button type="submit" className="btn-cta-large">ENVIAR MENSAJE</button>
+            </form>
+          </div>
+          <div className="col-12 col-lg-6">
+            <div className="contact-side">
+              <h2 className="contact-side__title">
+                <span>Contacta</span>
+                <span className="divider"></span>
+                <span>nos</span>
+              </h2>
+              <p className="contact-side__text">
+                Es muy importante para nosotros mantenernos en contacto contigo.
+                Estamos listos para responder cualquier consulta que tengas. ¡Escribinos!
+              </p>
+            </div>
           </div>
         </div>
       </section>
     </main>
   );
 }
-
