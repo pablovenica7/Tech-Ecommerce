@@ -8,9 +8,9 @@ export function Footer() {
         <div className="col-6 col-md-2 mb-3">
           <h5>Categorias</h5>
           <ul className="nav flex-column">
-            <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-body-secondary">Inicio</a></li>
-            <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-body-secondary">PCs de Escritorio</a></li>
-            <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-body-secondary">Contacto</a></li>
+            <li className="nav-item mb-2"><a href="/" className="nav-link p-0 text-body-secondary">Inicio</a></li>
+            <li className="nav-item mb-2"><a href="/pcs" className="nav-link p-0 text-body-secondary">PCs de Escritorio</a></li>
+            <li className="nav-item mb-2"><a href="/contacto" className="nav-link p-0 text-body-secondary">Contacto</a></li>
           </ul>
         </div>
 
@@ -43,3 +43,4 @@ export function Footer() {
     </footer>
   );
 }
+
