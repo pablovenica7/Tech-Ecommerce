@@ -1,10 +1,8 @@
-/* Layout general sobre tu fondo naranja */
 .contacto-wrapper {
   padding-top: 2rem;
   padding-bottom: 4rem;
 }
 
-/* Card translúcida con glass suave (no interfiere con navbar/footer) */
 .contact-card {
   border-radius: 18px;
   padding: 2rem;
@@ -14,7 +12,6 @@
   border: 1px solid rgba(255, 255, 255, 0.22);
 }
 
-/* Títulos */
 .contact-title {
   color: #111;
   font-weight: 800;
@@ -26,10 +23,8 @@
   margin: 0;
 }
 
-/* Altura cómoda del textarea con floating label */
 .h-120 { height: 120px; }
 
-/* Form: mejor contraste sobre el fondo */
 .form-floating > .form-control,
 .form-floating > textarea.form-control {
   background-color: rgba(255, 255, 255, 0.92);
@@ -43,41 +38,14 @@
   box-shadow: 0 0 0 .2rem rgba(0,0,0,.05);
 }
 
-/* Etiquetas */
 .form-floating > label {
   color: #666;
 }
 
-/* Metadata contacto (email/teléfono/horario) */
-.contact-meta {
-  border-top: 1px solid rgba(0,0,0,0.08);
-  padding-top: 1rem;
-}
-
-.meta-item {
-  background: #fff;
-  border: 1px solid rgba(0,0,0,0.06);
-  border-radius: 12px;
-  padding: .85rem 1rem;
-}
-
-.meta-label {
-  display: block;
-  font-size: .8rem;
-  color: #6b7280;
-}
-
-.meta-value {
-  font-weight: 600;
-  color: #111;
-}
-
-/* Botón */
 .btn-dark {
   border-radius: 999px;
 }
 
-/* Responsive */
 @media (max-width: 576px) {
   .contact-card { padding: 1.25rem; }
 }
