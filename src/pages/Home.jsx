@@ -16,7 +16,6 @@ export function Home() {
           <button className="btn-cta">Ver PCs de escritorio</button>
         </Link>
       </div>
-
       <div className="hero-image">
         <img src={personas} alt="Personas usando computadoras" className="hero-img" />
       </div>
