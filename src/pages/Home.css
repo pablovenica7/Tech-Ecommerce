@@ -33,7 +33,6 @@
 
 .btn-cta {
   background-color: #ffffff;
-  color: #e67300;
   font-weight: 600;
   padding: 12px 32px;
   border-radius: 999px;
@@ -43,8 +42,8 @@
 }
 
 .btn-cta:hover {
-  background-color: #ffdccc;
   transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(0,0,0,.18);
 }
 
 .hero-image {
@@ -70,3 +69,4 @@
   from { opacity: 0; }
   to { opacity: 1; }
 }
+
