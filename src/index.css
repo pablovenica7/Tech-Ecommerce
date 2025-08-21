@@ -131,3 +131,18 @@ footer h5 {
   font-weight: 600;
   margin-bottom: 1rem;
 }
+
+/* NAVBAR RESPONSIVE */
+@media (max-width: 991px) { /* tablets */
+  .logo-navbar { height: 56px; }
+  .custom-navbar .nav-link { font-size: 0.95rem; }
+}
+
+@media (max-width: 575px) { /* móviles */
+  .logo-navbar { height: 48px; }
+  .custom-navbar .nav-link { font-size: 0.9rem; padding-top: .15rem; padding-bottom: .15rem; }
+}
+
+@media (max-width: 575px) {
+  .custom-navbar .nav-link::after { width: 70%; }
+}
