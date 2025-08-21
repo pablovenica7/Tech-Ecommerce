@@ -1,3 +1,4 @@
+/* ===== Layout general ===== */
 .contacto-wrapper {
   min-height: calc(100vh - 60px);
   display: flex;
@@ -102,11 +103,22 @@
   white-space: nowrap; border: 0;
 }
 
+/* RESPONSIVE */
 @media (max-width: 991px) {
   .contact-side { margin-top: .5rem; }
   .contacto-wrapper {
     min-height: auto;
     padding: 1.5rem 0 2.5rem;
     display: block;
+  }
+}
+
+@media (max-width: 575px) {
+  .btn-cta-large {
+    padding: .9rem 1.1rem;
+    font-size: .95rem;
+  }
+  .contact-side__title {
+    font-size: clamp(1.6rem, 6vw, 2.2rem);
   }
 }
