@@ -146,3 +146,13 @@ footer h5 {
 @media (max-width: 575px) {
   .custom-navbar .nav-link::after { width: 70%; }
 }
+
+/* FOOTER RESPONSIVE */
+.footer-icon { width: 24px; height: 24px; }
+@media (max-width: 575px) { .footer-icon { width: 22px; height: 22px; } }
+
+footer { padding-top: 2rem; padding-bottom: 2rem; }
+
+@media (max-width: 575px) {
+  footer .row > [class*="col-"] { margin-bottom: 1rem; }
+}
