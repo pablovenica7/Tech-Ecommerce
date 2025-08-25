@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { CartWidget } from './CartWidget';
 import logo from '../assets/logo_navbar.png';
 
@@ -24,9 +24,19 @@ export function NavBar() {
             <img src={logo} alt="Logo VEYOR" className="logo-navbar" />
           </Link>
           <ul className="navbar-nav col-lg-6 justify-content-lg-center">
-            <li className="nav-item"><Link className="nav-link" to="/">Inicio</Link></li>
-            <li className="nav-item"><Link className="nav-link" to="/pcs">PCs de Escritorio</Link></li>
-            <li className="nav-item"><Link className="nav-link" to="/contacto">Contacto</Link></li>
+            <li className="nav-item"><NavLink className="nav-link" to="/">Inicio</NavLink></li>
+            <li className="nav-item"><NavLink className="nav-link" to="/catalogo">Catálogo</NavLink></li>
+            <li className="nav-item dropdown">
+              <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Categorías
+              </a>
+              <ul className="dropdown-menu">
+                <li><Link className="dropdown-item" to="/categoria/pcs">PCs de Escritorio</Link></li>
+                <li><Link className="dropdown-item" to="/categoria/notebooks">Notebooks</Link></li>
+                <li><Link className="dropdown-item" to="/categoria/monitores">Monitores</Link></li>
+              </ul>
+            </li>
+            <li className="nav-item"><NavLink className="nav-link" to="/contacto">Contacto</NavLink></li>
           </ul>
           <div className="d-lg-flex col-lg-3 justify-content-lg-end">
             <CartWidget />
