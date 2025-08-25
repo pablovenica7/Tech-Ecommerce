@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { ListaProductos } from './ListaProductos';
 
-// Fuente de datos simulada (podés moverla a otro archivo si querés)
 const DATA = [
   { id: 1, nombre: "PC Gamer Ryzen 5", precio: 580000, categoria: "pcs" },
   { id: 2, nombre: "Notebook Dell i7", precio: 720000, categoria: "notebooks" },
@@ -13,7 +12,7 @@ const DATA = [
 ];
 
 export function ItemListContainer(props) {
-  const { idCategoria } = useParams(); // puede venir undefined (en /catalogo)
+  const { idCategoria } = useParams();
   const [productos, setProductos] = useState([]);
   const [cargando, setCargando] = useState(true);
 
@@ -46,7 +45,6 @@ export function ItemListContainer(props) {
       <h2 className="mb-4">
         {idCategoria ? `${props.mensaje}: ${idCategoria}` : props.mensaje}
       </h2>
-
       {cargando
         ? <p className="text-muted">Cargando productos...</p>
         : <ListaProductos productos={productos} />
