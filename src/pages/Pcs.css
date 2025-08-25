@@ -1,0 +1,11 @@
+/* RESPONSIVE */
+.product-img { height: 220px; object-fit: cover; width: 100%; }
+@media (max-width: 991px) { .product-img { height: 200px; } }
+@media (max-width: 575px) { .product-img { height: 180px; } }
+
+.product-title { font-size: .95rem; }
+.product-price { font-size: 1.35rem; }
+@media (max-width: 575px) {
+  .product-title { font-size: .9rem; }
+  .product-price { font-size: 1.2rem; }
+}
