@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
 
-export function Producto(props) {
-  const { id, nombre, precio } = props;
-
+export function Producto({ id, nombre, precio }) {
   return (
     <div className="card h-100 shadow-sm">
       <div className="card-body d-flex flex-column">
