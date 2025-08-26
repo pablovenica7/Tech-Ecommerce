@@ -10,7 +10,7 @@ export function ItemDetail({ producto }) {
   return (
     <div className="row g-4 align-items-start">
       <div className="col-12 col-md-6">
-        <div className="bg-light border rounded-3 w-100" style={{aspectRatio: '1/1'}} />
+        <div className="bg-light border rounded-3 w-100" style={{ aspectRatio: '1 / 1' }} />
       </div>
 
       <div className="col-12 col-md-6">
