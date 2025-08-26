@@ -1,4 +1,3 @@
-// src/data/products.js
 const PRODUCTS = [
   { id: 1, nombre: "PC Gamer Ryzen 5",        precio: 580000, categoria: "pcs",       descripcion: "PC gamer equilibrada para 1080p." },
   { id: 2, nombre: "Notebook Dell i7",        precio: 720000, categoria: "notebooks", descripcion: "Notebook para trabajo y estudio." },
@@ -20,3 +19,4 @@ export function fetchProductById(id, delayMs = 800) {
     }, delayMs);
   });
 }
+
