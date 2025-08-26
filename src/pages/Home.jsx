@@ -12,8 +12,8 @@ export function Home() {
         <h2>
           Soluciones modernas y eficientes para llevar tu rendimiento al siguiente nivel.
         </h2>
-        <Link to="/pcs">
-          <button className="btn-cta">Ver PCs de escritorio</button>
+        <Link to="/catalogo">
+          <button className="btn-cta">Ver catálogo de productos</button>
         </Link>
       </div>
       <div className="hero-image">
@@ -22,3 +22,4 @@ export function Home() {
     </main>
   );
 }
+
