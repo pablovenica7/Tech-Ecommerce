@@ -10,7 +10,7 @@ function NotFound() {
   return (
     <main className="container py-5">
       <h2>404 - Página no encontrada</h2>
-      <p>El recurso que buscás no existe o fue movido.</p>
+      <p>Verificá la URL o navegá desde el menú.</p>
     </main>
   );
 }
