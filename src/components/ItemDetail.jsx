@@ -1,10 +1,17 @@
 import { ItemCount } from "./ItemCount";
+import Swal from "sweetalert2";
 
 export function ItemDetail({ producto }) {
   const { nombre, precio, descripcion, categoria, img } = producto;
 
   const handleAdd = (cantidad) => {
-    alert(`Agregaste ${cantidad} unidad(es) de "${nombre}" al carrito.`);
+    Swal.fire({
+      icon: "success",
+      title: "¡Producto agregado!",
+      text: `Agregaste ${cantidad} unidad(es) de "${nombre}" al carrito.`,
+      confirmButtonText: "Listo",
+      confirmButtonColor: "#ff7a1a",
+    });
   };
 
   return (
