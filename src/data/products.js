@@ -1,4 +1,3 @@
-// src/data/products.js
 import pcGamer from "../assets/pc-gamer.png";
 import notebook from "../assets/notebook.png";
 import monitor from "../assets/monitor.png";
@@ -66,3 +65,4 @@ export function fetchProductById(id, delayMs = 800) {
     }, delayMs);
   });
 }
+
