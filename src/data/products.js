@@ -65,4 +65,3 @@ export function fetchProductById(id, delayMs = 800) {
     }, delayMs);
   });
 }
-
