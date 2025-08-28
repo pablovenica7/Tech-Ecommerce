@@ -5,7 +5,6 @@ import { Home } from './pages/Home';
 import { Contacto } from './pages/Contacto';
 import { ItemListContainer } from './components/ItemListContainer';
 import { ItemDetailContainer } from './components/ItemDetailContainer';
-import './pages/catalogo.css';
 
 function NotFound() {
   return (
