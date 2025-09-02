@@ -1,27 +1,25 @@
 import { Link } from "react-router-dom";
 
 export function Producto({ id, nombre, precio, img }) {
+  const cuota12 = Math.ceil(precio / 12);
+
   return (
-    <div className="card h-100 shadow-sm">
-      {img && (
-        <img src={img} alt={nombre} className="card-img-top" />
-      )}
+    <Link to={`/producto/${id}`} className="catalog-card h-100">
+      <div className="catalog-img-wrap">
+        {img ? (
+          <img src={img} alt={nombre} className="catalog-img" />
+        ) : (
+          <div className="catalog-img placeholder"></div>
+        )}
+      </div>
 
-      <div className="card-body d-flex flex-column">
-        <h5 className="card-title">{nombre}</h5>
-        <p className="card-text text-muted mb-4">
-          Precio: ${precio.toLocaleString()}
-        </p>
+      <div className="catalog-body">
+        <h3 className="catalog-title">{nombre}</h3>
 
-        <div className="mt-auto d-flex gap-2">
-          <Link className="btn btn-outline-dark" to={`/producto/${id}`}>
-            Ver detalle
-          </Link>
-          <Link className="btn btn-dark" to={`/producto/${id}`}>
-            Comprar
-          </Link>
+        <div className="catalog-price-box">
+          <span className="catalog-price">${precio.toLocaleString()}</span>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
