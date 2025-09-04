@@ -278,6 +278,22 @@ footer h5 {
   margin: 0;
 }
 
+.img-container {
+  background: #fff;          /* fondo blanco */
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 280px;         /* asegura un alto mínimo */
+}
+
+.img-container img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
 
 /* Responsive */
 @media (max-width: 991px) {
