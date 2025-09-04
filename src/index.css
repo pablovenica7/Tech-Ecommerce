@@ -213,6 +213,72 @@ footer h5 {
   color: #666;
 }
 
+/* ===== Estilo de productos con zona imagen gris y body blanco ===== */
+.product-card {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.product-card:hover {
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  border-color: #ff7a1a; /* borde naranja al hover */
+}
+
+.product-link {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* --- ZONA IMAGEN (gris) --- */
+.product-img-wrap {
+  background: #f7f7f7; /* gris claro */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  min-height: 220px;
+}
+
+.product-img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* --- ZONA INFO (blanca) --- */
+.product-body {
+  background: #fff; /* blanco */
+  padding: 15px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.product-title {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #333;
+  margin: 0;
+  min-height: 2.5em; /* para alinear nombres con distintas longitudes */
+}
+
+.product-price {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #000;
+  margin: 0;
+}
+
+
 /* Responsive */
 @media (max-width: 991px) {
   .catalog-title { font-size: 1rem; }
