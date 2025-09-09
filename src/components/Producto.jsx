@@ -20,3 +20,4 @@ export function Producto({ id, nombre, precio, img }) {
     </div>
   );
 }
+
