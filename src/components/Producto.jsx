@@ -17,11 +17,6 @@ export function Producto({ id, nombre, precio, img }) {
           <p className="product-price">${precio.toLocaleString()}</p>
         </div>
       </Link>
-
-      <div className="product-actions">
-        <Link to={`/producto/${id}`} className="btn-product">Comprar</Link>
-        <Link to={`/producto/${id}`} className="btn-product">Ver detalle</Link>
-      </div>
     </div>
   );
 }
