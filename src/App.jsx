@@ -6,6 +6,7 @@ import { Home } from './pages/Home';
 import { Contacto } from './pages/Contacto';
 import { ItemListContainer } from './components/ItemListContainer';
 import { ItemDetailContainer } from './components/ItemDetailContainer';
+import { Catalogo } from './pages/Catalogo';
 
 function NotFound() {
   return (
@@ -42,7 +43,7 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/catalogo" element={<ItemListContainer mensaje="Catálogo de productos" />} />
+        <Route path="/catalogo" element={<Catalogo />} />
         <Route path="/categoria/:idCategoria" element={<ItemListContainer mensaje="Categoría" />} />
         <Route path="/producto/:idProducto" element={<ItemDetailContainer />} />
         <Route path="/contacto" element={<Contacto />} />
