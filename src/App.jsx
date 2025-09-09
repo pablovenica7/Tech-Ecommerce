@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { useEffect } from 'react';
 import { NavBar } from './components/NavBar';
 import { Footer } from './components/Footer';
 import { Home } from './pages/Home';
@@ -16,6 +17,26 @@ function NotFound() {
 }
 
 function App() {
+  useEffect(() => {
+    let lastScroll = 0;
+    const navbar = document.querySelector(".custom-navbar");
+
+    function onScroll() {
+      const current = window.scrollY;
+      if (current > lastScroll && current > 80) {
+        navbar.classList.remove("show");
+        navbar.classList.add("hide");
+      } else {
+        navbar.classList.remove("hide");
+        navbar.classList.add("show");
+      }
+      lastScroll = current;
+    }
+
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <BrowserRouter>
       <NavBar />
