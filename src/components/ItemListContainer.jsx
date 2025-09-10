@@ -86,4 +86,3 @@ export function ItemListContainer({ mensaje }) {
     </main>
   );
 }
-
