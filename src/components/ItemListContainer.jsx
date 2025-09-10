@@ -70,7 +70,7 @@ export function ItemListContainer({ mensaje }) {
               value={orden}
               onChange={(e) => setOrden(e.target.value)}
             >
-              <option value="" disabled hidden>Ordenar por:</option>
+              <option value="" disabled hidden>Ordenar por</option>
               <option value="todo">Todos</option>
               <option value="mayor">Mayor precio</option>
               <option value="menor">Menor precio</option>
@@ -86,3 +86,4 @@ export function ItemListContainer({ mensaje }) {
     </main>
   );
 }
+
