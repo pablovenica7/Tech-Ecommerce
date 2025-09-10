@@ -45,6 +45,7 @@ export function ItemListContainer({ mensaje }) {
       <h2 className="catalogo-title">{titulo}</h2>
 
       <div className="row g-4 catalogo-layout">
+        {/* ==== Filtros (izquierda) ==== */}
         <aside className="col-12 col-lg-3">
           <div className="catalogo-filtros">
             <div className="filtros-header">Filtros</div>
@@ -63,18 +64,22 @@ export function ItemListContainer({ mensaje }) {
           </div>
         </aside>
 
+        {/* ==== Ordenar + Productos (derecha) ==== */}
         <section className="col-12 col-lg-9">
-          <div className="ordenar-box d-flex align-items-center gap-2 justify-content-end">
-            <select
-              className="ordenar-select"
-              value={orden}
-              onChange={(e) => setOrden(e.target.value)}
-            >
-              <option value="" disabled hidden>Ordenar por</option>
-              <option value="todo">Todos</option>
-              <option value="mayor">Mayor precio</option>
-              <option value="menor">Menor precio</option>
-            </select>
+          <div className="d-flex justify-content-end mb-3">
+            <div className="ordenar-box">
+              <span className="ordenar-title">Ordenar por</span>
+              <select
+                className="ordenar-select"
+                value={orden}
+                onChange={(e) => setOrden(e.target.value)}
+              >
+                <option value="" disabled hidden>Ordenar por</option>
+                <option value="todo">Todos</option>
+                <option value="mayor">Mayor precio</option>
+                <option value="menor">Menor precio</option>
+              </select>
+            </div>
           </div>
 
           {cargando
