@@ -251,15 +251,15 @@ footer h5 { color: #000; font-weight: 600; margin-bottom: 1rem; }
   border: 1px solid rgba(255,255,255,0.15);
   border-radius: 12px;
   padding: 16px;
+  margin-top: 93px;
 }
+
 .filtros-header {
   color: #fff;
   font-weight: 700;
-  padding: 10px 0;
-  border-top: 2px solid #fff;
-  border-bottom: 2px solid #fff;
   margin-bottom: 12px;
 }
+
 .filtro-btn {
   width: 100%;
   text-align: left;
@@ -272,18 +272,18 @@ footer h5 { color: #000; font-weight: 600; margin-bottom: 1rem; }
   cursor: pointer;
   transition: background .2s ease;
 }
+
 .filtro-btn:hover { background: #ff7a1a; color: #fff; }
 .filtro-btn.active { background: #ff7a1a; color: #fff; }
 
-/* Ordenar por (arriba de la grilla) */
 .ordenar-box {
   color: #fff;
   padding: 10px 0;
-  border-top: 2px solid #fff;
-  border-bottom: 2px solid #fff;
   margin-bottom: 16px;
 }
+
 .ordenar-title { font-weight: 700; }
+
 .ordenar-select {
   background: #fff;
   border: 1px solid var(--border);
