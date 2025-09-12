@@ -8,7 +8,7 @@ const PRODUCTS = [
     nombre: "PC Gamer Ryzen 5",
     precio: 580000,
     categoria: "pcs",
-    descripcion: "Equilibrada para juegos en 1080p con buena relación calidad/precio.",
+    descripcion: "Configuración equilibrada con procesador AMD Ryzen 5, pensada para juegos en 1080p con excelente rendimiento gráfico y multitarea fluida. Ideal para quienes buscan una PC confiable y con gran relación precio/calidad.",
     img: pcGamer
   },
   { 
@@ -16,7 +16,7 @@ const PRODUCTS = [
     nombre: "PC Office i5",
     precio: 430000,
     categoria: "pcs",
-    descripcion: "Ideal para ofimática, multimedia y tareas cotidianas.",
+    descripcion: "Equipo de escritorio con procesador Intel i5, diseñado para tareas de oficina, navegación web, videollamadas y entretenimiento multimedia. Silenciosa y eficiente, perfecta para el día a día.",
     img: pcGamer
   },
   { 
@@ -24,7 +24,7 @@ const PRODUCTS = [
     nombre: "PC Gamer Ryzen 7",
     precio: 690000,
     categoria: "pcs",
-    descripcion: "Potencia extra para jugar en 1440p y multitarea exigente.",
+    descripcion: "Potente PC equipada con procesador AMD Ryzen 7, ideal para gaming en 1440p y multitarea exigente. Ofrece fluidez en títulos modernos, streaming y creación de contenido sin compromisos.",
     img: pcGamer
   },
   { 
@@ -32,7 +32,7 @@ const PRODUCTS = [
     nombre: "PC Office i3",
     precio: 350000,
     categoria: "pcs",
-    descripcion: "Compacta y económica, perfecta para estudiantes.",
+    descripcion: "Compacta y accesible, equipada con procesador Intel i3. Perfecta para estudiantes y usuarios que buscan un equipo económico para ofimática, clases online y tareas básicas del hogar.",
     img: pcGamer
   },
   { 
@@ -40,7 +40,7 @@ const PRODUCTS = [
     nombre: "PC Gamer Intel i5",
     precio: 550000,
     categoria: "pcs",
-    descripcion: "Óptima para eSports con gráficos competitivos.",
+    descripcion: "Equipada con procesador Intel i5 y gráfica dedicada, diseñada para eSports y juegos competitivos. Ofrece altos FPS y estabilidad en títulos populares como CS2, Valorant y Fortnite.",
     img: pcGamer
   },
   { 
@@ -48,7 +48,7 @@ const PRODUCTS = [
     nombre: "PC Workstation Xeon",
     precio: 1200000,
     categoria: "pcs",
-    descripcion: "Rendimiento profesional para diseño gráfico y CAD.",
+    descripcion: "Estación de trabajo con procesador Intel Xeon, orientada a profesionales de diseño gráfico, edición de video, CAD y modelado 3D. Máxima potencia y confiabilidad para proyectos de alto nivel.",
     img: pcGamer
   },
 
@@ -57,7 +57,7 @@ const PRODUCTS = [
     nombre: "Notebook Dell i7",
     precio: 720000,
     categoria: "notebooks",
-    descripcion: "Potente y versátil para trabajo y estudio avanzado.",
+    descripcion: "Notebook con procesador Intel i7 de última generación, ideal para estudiantes y profesionales que requieren portabilidad con gran potencia de procesamiento y diseño elegante.",
     img: notebook
   },
   { 
@@ -65,7 +65,7 @@ const PRODUCTS = [
     nombre: "Notebook Lenovo Ryzen 7",
     precio: 810000,
     categoria: "notebooks",
-    descripcion: "Rendimiento portátil de alta gama para multitarea.",
+    descripcion: "Portátil de alto rendimiento con procesador AMD Ryzen 7, ideal para multitarea avanzada, programación, edición de video y uso intensivo en movilidad.",
     img: notebook
   },
   { 
@@ -73,7 +73,7 @@ const PRODUCTS = [
     nombre: "Notebook HP i5",
     precio: 650000,
     categoria: "notebooks",
-    descripcion: "Equilibrio entre movilidad, autonomía y potencia.",
+    descripcion: "Laptop versátil con procesador Intel i5, pensada para usuarios que buscan equilibrio entre autonomía, portabilidad y potencia. Perfecta para oficina, estudio y entretenimiento.",
     img: notebook
   },
   { 
@@ -81,7 +81,7 @@ const PRODUCTS = [
     nombre: "Notebook Asus Gamer",
     precio: 950000,
     categoria: "notebooks",
-    descripcion: "Pantalla 144Hz y GPU dedicada para gaming.",
+    descripcion: "Notebook gamer con pantalla de 144Hz y tarjeta gráfica dedicada. Diseñada para juegos exigentes y experiencia inmersiva en movilidad sin perder fluidez.",
     img: notebook
   },
   { 
@@ -89,7 +89,7 @@ const PRODUCTS = [
     nombre: "Notebook Acer Aspire 3",
     precio: 480000,
     categoria: "notebooks",
-    descripcion: "Ligera y práctica para uso diario y clases online.",
+    descripcion: "Ligera, confiable y con excelente autonomía. Perfecta para clases online, tareas de oficina y uso cotidiano. Su diseño compacto la hace fácil de transportar.",
     img: notebook
   },
   { 
@@ -97,7 +97,7 @@ const PRODUCTS = [
     nombre: "Notebook MacBook Air M1",
     precio: 1050000,
     categoria: "notebooks",
-    descripcion: "Eficiencia energética y diseño premium de Apple.",
+    descripcion: "Diseño premium de Apple con chip M1, reconocido por su eficiencia energética y potencia. Ideal para edición de video, diseño gráfico y trabajo creativo en un formato ultraligero.",
     img: notebook
   },
 
@@ -106,7 +106,7 @@ const PRODUCTS = [
     nombre: "Monitor 27'' LG IPS",
     precio: 250000,
     categoria: "monitores",
-    descripcion: "Panel IPS Full HD con 75Hz para trabajo y ocio.",
+    descripcion: "Monitor de 27 pulgadas con panel IPS Full HD y 75Hz. Ofrece colores precisos y gran ángulo de visión, perfecto para trabajo de oficina, edición ligera y entretenimiento.",
     img: monitor
   },
   { 
@@ -114,7 +114,7 @@ const PRODUCTS = [
     nombre: "Monitor 24'' Samsung",
     precio: 190000,
     categoria: "monitores",
-    descripcion: "Compacto y nítido, ideal para oficina y hogar.",
+    descripcion: "Pantalla compacta y nítida de 24 pulgadas, ideal para espacios reducidos. Excelente opción para oficina y uso doméstico con eficiencia energética y diseño minimalista.",
     img: monitor
   },
   { 
@@ -122,7 +122,7 @@ const PRODUCTS = [
     nombre: "Monitor 32'' Curvo Samsung",
     precio: 320000,
     categoria: "monitores",
-    descripcion: "Inmersión total para películas y gaming.",
+    descripcion: "Pantalla curva de 32 pulgadas que brinda inmersión total en películas y videojuegos. Diseño moderno con colores vibrantes y comodidad para sesiones largas.",
     img: monitor
   },
   { 
@@ -130,7 +130,7 @@ const PRODUCTS = [
     nombre: "Monitor 29'' Ultrawide LG",
     precio: 400000,
     categoria: "monitores",
-    descripcion: "Más espacio de trabajo para multitarea y edición.",
+    descripcion: "Monitor ultrawide de 29 pulgadas, diseñado para aumentar la productividad. Ideal para multitarea, edición y disfrutar de una experiencia panorámica en videojuegos.",
     img: monitor
   },
   { 
@@ -138,7 +138,7 @@ const PRODUCTS = [
     nombre: "Monitor 24'' AOC Gamer",
     precio: 210000,
     categoria: "monitores",
-    descripcion: "144Hz y 1ms para eSports competitivos.",
+    descripcion: "Monitor gamer con frecuencia de 144Hz y tiempo de respuesta de 1ms. Perfecto para eSports competitivos, garantizando fluidez y precisión en cada partida.",
     img: monitor
   },
   { 
@@ -146,7 +146,7 @@ const PRODUCTS = [
     nombre: "Monitor 34'' Ultrawide",
     precio: 520000,
     categoria: "monitores",
-    descripcion: "Ideal para edición de video y productividad.",
+    descripcion: "Impresionante monitor ultrawide de 34 pulgadas, ideal para edición de video, diseño profesional y multitarea. Su resolución panorámica ofrece máxima productividad y experiencia envolvente.",
     img: monitor
   },
 ];
