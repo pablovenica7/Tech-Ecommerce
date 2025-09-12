@@ -22,42 +22,18 @@ export function ItemDetail({ producto }) {
 
   return (
     <div className="detalle-container">
-      <div className="detalle-layout">
-        {/* Galería e info principal */}
-        <section className="detalle-gallery">
-          <h1 className="detalle-title">{nombre}</h1>
+      {/* Fila superior */}
+      <div className="detalle-top">
+        <h1 className="detalle-title">{nombre}</h1>
 
-          <div className="detalle-imgbox">
-            {img ? (
-              <img src={img} alt={nombre} className="detalle-img" />
-            ) : (
-              <div className="detalle-img placeholder" />
-            )}
-          </div>
-
-          {descripcion && (
-            <div className="detalle-desc">
-              <p>{descripcion}</p>
-            </div>
+        <div className="detalle-imgbox">
+          {img ? (
+            <img src={img} alt={nombre} className="detalle-img" />
+          ) : (
+            <div className="detalle-img placeholder" />
           )}
+        </div>
 
-          {/* 🔽 Sección de características técnicas */}
-          {caracteristicas && (
-            <div className="detalle-caracteristicas">
-              <h2>Características</h2>
-              <div className="caracteristicas-grid">
-                {Object.entries(caracteristicas).map(([clave, valor]) => (
-                  <div key={clave} className="caracteristica">
-                    <h3>{clave.charAt(0).toUpperCase() + clave.slice(1)}</h3>
-                    <p>{valor}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-        </section>
-
-        {/* Panel lateral de compra */}
         <aside className="detalle-info">
           <span className="categoria-badge">{categoria}</span>
 
@@ -77,7 +53,6 @@ export function ItemDetail({ producto }) {
             </div>
           </section>
 
-          {/* Selector de cantidad */}
           <div className="qty-row">
             <label className="qty-label">Cantidad</label>
             <div className="qty-control">
@@ -99,12 +74,40 @@ export function ItemDetail({ producto }) {
             </div>
           </div>
 
-          {/* Botón de compra */}
           <button className="btn-comprar" onClick={handleBuy}>
             Comprar
           </button>
         </aside>
       </div>
+
+      {/* Separador */}
+      <hr className="detalle-divider" />
+
+      {/* Descripción */}
+      {descripcion && (
+        <div className="detalle-desc">
+          <h2>Descripción</h2>
+          <p>{descripcion}</p>
+        </div>
+      )}
+
+      {/* Separador */}
+      <hr className="detalle-divider" />
+
+      {/* Características */}
+      {caracteristicas && (
+        <div className="detalle-caracteristicas">
+          <h2>Características</h2>
+          <div className="caracteristicas-grid">
+            {Object.entries(caracteristicas).map(([clave, valor]) => (
+              <div key={clave} className="caracteristica">
+                <h3>{clave.charAt(0).toUpperCase() + clave.slice(1)}</h3>
+                <p>{valor}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
