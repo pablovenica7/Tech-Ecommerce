@@ -24,16 +24,19 @@ export function ItemDetail({ producto }) {
     <div className="detalle-container">
       {/* Fila superior */}
       <div className="detalle-top">
-        <h1 className="detalle-title">{nombre}</h1>
-
-        <div className="detalle-imgbox">
-          {img ? (
-            <img src={img} alt={nombre} className="detalle-img" />
-          ) : (
-            <div className="detalle-img placeholder" />
-          )}
+        {/* Columna izquierda: nombre + imagen */}
+        <div className="detalle-left">
+          <h1 className="detalle-title">{nombre}</h1>
+          <div className="detalle-imgbox">
+            {img ? (
+              <img src={img} alt={nombre} className="detalle-img" />
+            ) : (
+              <div className="detalle-img placeholder" />
+            )}
+          </div>
         </div>
 
+        {/* Columna derecha: panel compra */}
         <aside className="detalle-info">
           <span className="categoria-badge">{categoria}</span>
 
