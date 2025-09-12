@@ -22,21 +22,24 @@ export function ItemDetail({ producto }) {
 
   return (
     <div className="detalle-container">
-      {/* Fila superior */}
+      {/* Cabecera */}
+      <div className="detalle-header">
+        <h1 className="detalle-title">{nombre}</h1>
+        <hr className="detalle-divider" />
+      </div>
+
+      {/* Imagen + Panel de compra */}
       <div className="detalle-top">
-        {/* Columna izquierda: nombre + imagen */}
-        <div className="detalle-left">
-          <h1 className="detalle-title">{nombre}</h1>
-          <div className="detalle-imgbox">
-            {img ? (
-              <img src={img} alt={nombre} className="detalle-img" />
-            ) : (
-              <div className="detalle-img placeholder" />
-            )}
-          </div>
+        {/* Imagen */}
+        <div className="detalle-imgbox">
+          {img ? (
+            <img src={img} alt={nombre} className="detalle-img" />
+          ) : (
+            <div className="detalle-img placeholder" />
+          )}
         </div>
 
-        {/* Columna derecha: panel compra */}
+        {/* Panel de compra */}
         <aside className="detalle-info">
           <span className="categoria-badge">{categoria}</span>
 
@@ -83,33 +86,33 @@ export function ItemDetail({ producto }) {
         </aside>
       </div>
 
-      {/* Separador */}
-      <hr className="detalle-divider" />
-
       {/* Descripción */}
       {descripcion && (
-        <div className="detalle-desc">
-          <h2>Descripción</h2>
-          <p>{descripcion}</p>
-        </div>
+        <>
+          <hr className="detalle-divider" />
+          <div className="detalle-desc">
+            <h2>Descripción</h2>
+            <p>{descripcion}</p>
+          </div>
+        </>
       )}
-
-      {/* Separador */}
-      <hr className="detalle-divider" />
 
       {/* Características */}
       {caracteristicas && (
-        <div className="detalle-caracteristicas">
-          <h2>Características</h2>
-          <div className="caracteristicas-grid">
-            {Object.entries(caracteristicas).map(([clave, valor]) => (
-              <div key={clave} className="caracteristica">
-                <h3>{clave.charAt(0).toUpperCase() + clave.slice(1)}</h3>
-                <p>{valor}</p>
-              </div>
-            ))}
+        <>
+          <hr className="detalle-divider" />
+          <div className="detalle-caracteristicas">
+            <h2>Características</h2>
+            <div className="caracteristicas-grid">
+              {Object.entries(caracteristicas).map(([clave, valor]) => (
+                <div key={clave} className="caracteristica">
+                  <h3>{clave.charAt(0).toUpperCase() + clave.slice(1)}</h3>
+                  <p>{valor}</p>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
+        </>
       )}
     </div>
   );
