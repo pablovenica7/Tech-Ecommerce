@@ -40,6 +40,53 @@ export function ItemDetail({ producto }) {
               <p>{descripcion}</p>
             </div>
           )}
+
+          {/* 🔽 Nueva sección de características técnicas */}
+          <div className="detalle-caracteristicas">
+            <h2>Características</h2>
+            <div className="caracteristicas-grid">
+              <div className="caracteristica">
+                <h3>Accesorios</h3>
+                <p>Teclado y Mouse incluidos</p>
+              </div>
+              <div className="caracteristica">
+                <h3>Almacenamiento</h3>
+                <p>Interfaz: SATA<br/>Capacidad: 240GB</p>
+              </div>
+              <div className="caracteristica">
+                <h3>Conectividad</h3>
+                <p>Ethernet: Sí<br/>Wi-Fi: Sí<br/>Bluetooth: No<br/>HDMI: Sí</p>
+              </div>
+              <div className="caracteristica">
+                <h3>Fuente</h3>
+                <p>500W Genérica</p>
+              </div>
+              <div className="caracteristica">
+                <h3>Memoria RAM</h3>
+                <p>8GB DDR4 (1x8GB)<br/>Expandable hasta 64GB</p>
+              </div>
+              <div className="caracteristica">
+                <h3>Motherboard</h3>
+                <p>A520M-K CSM</p>
+              </div>
+              <div className="caracteristica">
+                <h3>Procesador</h3>
+                <p>AMD 3000G<br/>2 Núcleos / 4 Hilos<br/>3.5GHz<br/>4MB SmartCache</p>
+              </div>
+              <div className="caracteristica">
+                <h3>Puertos</h3>
+                <p>USB 2.0, HDMI, Audio/Mic 3.5mm</p>
+              </div>
+              <div className="caracteristica">
+                <h3>Sistema Operativo</h3>
+                <p>No incluido, compatible con Windows 11</p>
+              </div>
+              <div className="caracteristica">
+                <h3>Uso recomendado</h3>
+                <p>Hogar y oficina (básico)<br/>Gaming ligero<br/>Arquitectura y diseño básico</p>
+              </div>
+            </div>
+          </div>
         </section>
 
         {/* Panel lateral de compra */}
