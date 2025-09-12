@@ -217,7 +217,7 @@ footer h5 { color: #000; font-weight: 600; margin-bottom: 1rem; }
 .detalle-imgbox:hover { transform: scale(1.02); }
 
 .detalle-img { width: 100%; height: auto; object-fit: contain; }
-.detalle-desc { margin-top: 20px; color: #555; line-height: 1.6; font-size: 1rem; }
+.detalle-desc { margin-top: 20px; color: white; line-height: 1.6; font-size: 1rem; }
 
 .detalle-info {
   background: var(--card);
