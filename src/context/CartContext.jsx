@@ -1,58 +1,30 @@
-import { createContext, useState, useContext } from "react";
+import { createContext, useContext, useState } from "react";
 
-// 1. Crear contexto
 const CartContext = createContext();
-
-// 2. Hook personalizado para usar el contexto
 export const useCart = () => useContext(CartContext);
 
-// 3. Proveedor del carrito
 export function CartProvider({ children }) {
   const [cart, setCart] = useState([]);
 
-  // Agregar producto
-  const addToCart = (producto, qty) => {
-    const itemInCart = cart.find((item) => item.id === producto.id);
-
-    if (itemInCart) {
-      setCart(
-        cart.map((item) =>
-          item.id === producto.id
-            ? { ...item, qty: item.qty + qty }
-            : item
-        )
-      );
-    } else {
-      setCart([...cart, { ...producto, qty }]);
-    }
+  const addItem = (producto, cantidad) => {
+    setCart(prev => {
+      const existe = prev.find(p => p.id === producto.id);
+      if (existe) {
+        return prev.map(p =>
+          p.id === producto.id ? { ...p, cantidad: p.cantidad + cantidad } : p
+        );
+      }
+      return [...prev, { ...producto, cantidad }];
+    });
   };
 
-  // Eliminar producto
-  const removeFromCart = (id) => {
-    setCart(cart.filter((item) => item.id !== id));
-  };
-
-  // Vaciar carrito
+  const removeItem = (id) => setCart(prev => prev.filter(p => p.id !== id));
   const clearCart = () => setCart([]);
-
-  // Calcular totales
-  const totalUnidades = cart.reduce((acc, item) => acc + item.qty, 0);
-  const totalPrecio = cart.reduce(
-    (acc, item) => acc + item.precio * item.qty,
-    0
-  );
+  const totalItems = () => cart.reduce((acc, p) => acc + p.cantidad, 0);
+  const totalPrice = () => cart.reduce((acc, p) => acc + p.precio * p.cantidad, 0);
 
   return (
-    <CartContext.Provider
-      value={{
-        cart,
-        addToCart,
-        removeFromCart,
-        clearCart,
-        totalUnidades,
-        totalPrecio,
-      }}
-    >
+    <CartContext.Provider value={{ cart, addItem, removeItem, clearCart, totalItems, totalPrice }}>
       {children}
     </CartContext.Provider>
   );
