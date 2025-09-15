@@ -1,28 +1,28 @@
-import { useCart } from "../context/CartContext";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { CartProvider } from "./context/CartContext";
+import { NavBar } from "./components/NavBar";
+import { ItemListContainer } from "./components/ItemListContainer";
+import { ItemDetailContainer } from "./components/ItemDetailContainer";
+import { Cart } from "./components/Cart";
+import { Checkout } from "./components/Checkout";
+import { Footer } from "./components/Footer";
 
-export function Cart() {
-  const { cart, removeFromCart, clearCart, totalPrecio } = useCart();
-
-  if (cart.length === 0) {
-    return <p className="cart-empty">Tu carrito está vacío 🛒</p>;
-  }
-
+function App() {
   return (
-    <div className="cart-container">
-      <h2>Carrito de Compras</h2>
-      <ul className="cart-list">
-        {cart.map((item) => (
-          <li key={item.id} className="cart-item">
-            <span>{item.nombre}</span>
-            <span>{item.qty} x ${item.precio.toLocaleString("es-AR")}</span>
-            <button onClick={() => removeFromCart(item.id)}>Eliminar</button>
-          </li>
-        ))}
-      </ul>
-      <h3>Total: ${totalPrecio.toLocaleString("es-AR")}</h3>
-      <button onClick={clearCart} className="btn-clear">
-        Vaciar carrito
-      </button>
-    </div>
+    <CartProvider>
+      <BrowserRouter>
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<ItemListContainer />} />
+          <Route path="/categoria/:id" element={<ItemListContainer />} />
+          <Route path="/detalle/:id" element={<ItemDetailContainer />} />
+          <Route path="/carrito" element={<Cart />} />
+          <Route path="/checkout" element={<Checkout />} />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
+    </CartProvider>
   );
 }
+
+export default App;
