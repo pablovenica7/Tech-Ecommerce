@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export function Producto({ id, nombre, precio, img }) {
   return (
     <div className="product-card">
-      <Link to={`/detalle/${id}`} className="product-link">
+      <Link to={`/producto/${id}`} className="product-link">
         <div className="product-img-wrap">
           {img ? (
             <img src={img} alt={nombre} className="product-img" />
@@ -14,7 +14,7 @@ export function Producto({ id, nombre, precio, img }) {
 
         <div className="product-body">
           <h3 className="product-title">{nombre}</h3>
-          <p className="product-price">${precio.toLocaleString("es-AR")}</p>
+          <p className="product-price">${precio.toLocaleString()}</p>
         </div>
       </Link>
     </div>
