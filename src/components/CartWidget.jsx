@@ -1,11 +1,15 @@
-import carrito from "../assets/icono_carrito.png";
-import user from "../assets/icono_user.png";
+import { Link } from "react-router-dom";
+import { useCart } from "../context/CartContext";
 
 export function CartWidget() {
+  const { totalUnidades } = useCart();
+
   return (
-    <div className="d-flex align-items-center gap-3">
-      <img src={carrito} alt="Carrito" className="icono-navbar" />
-      <img src={user} alt="Usuario" className="icono-navbar" />
-    </div>
+    <Link to="/carrito" className="cart-widget">
+      🛒
+      {totalUnidades > 0 && (
+        <span className="cart-count">{totalUnidades}</span>
+      )}
+    </Link>
   );
 }
