@@ -1,23 +1,21 @@
 import { useState } from "react";
 import Swal from "sweetalert2";
-import { useCart } from "../context/CartContext";
 
 export function ItemDetail({ producto }) {
   if (!producto) return null;
 
-  const { nombre, precio, descripcion, categoria, img, caracteristicas, stock } = producto;
+  const { nombre, precio, descripcion, categoria, img, caracteristicas } = producto;
   const [qty, setQty] = useState(1);
-  const { addItem } = useCart();
 
   const dec = () => setQty((q) => Math.max(1, q - 1));
-  const inc = () => setQty((q) => Math.min(stock, q + 1));
+  const inc = () => setQty((q) => q + 1);
 
   const handleBuy = () => {
-    addItem(producto, qty);
     Swal.fire({
       icon: "success",
       title: "¡Producto agregado!",
       text: `Agregaste ${qty} unidad(es) de "${nombre}" al carrito.`,
+      confirmButtonText: "Listo",
       confirmButtonColor: "#ff7a1a",
     });
   };
@@ -50,44 +48,41 @@ export function ItemDetail({ producto }) {
               ${precio.toLocaleString("es-AR")}
             </div>
             <div className="precio-metodo">
-              Precio pagando en <strong>efectivo, transferencia o depósito</strong>
+              Precio pagando en{" "}
+              <strong>efectivo, transferencia bancaria o depósito</strong>
             </div>
             <div className="precio-sin-imp">
               Precio sin impuestos nacionales:{" "}
-              <strong>${Math.round(precio * 0.91).toLocaleString("es-AR")}</strong>
+              <strong>
+                ${Math.round(precio * 0.91).toLocaleString("es-AR")}
+              </strong>
             </div>
           </section>
 
-          {stock > 0 ? (
-            <>
-              <div className="qty-row">
-                <label className="qty-label">Cantidad (Stock: {stock})</label>
-                <div className="qty-control">
-                  <button className="qty-btn" onClick={dec} aria-label="Restar">−</button>
-                  <input
-                    className="qty-input"
-                    type="number"
-                    min={1}
-                    max={stock}
-                    value={qty}
-                    onChange={(e) => {
-                      const val = Math.max(1, Math.min(stock, Number(e.target.value) || 1));
-                      setQty(val);
-                    }}
-                  />
-                  <button className="qty-btn" onClick={inc} aria-label="Sumar">+</button>
-                </div>
-              </div>
-
-              <button className="btn-comprar" onClick={handleBuy}>
-                Comprar
+          <div className="qty-row">
+            <label className="qty-label">Cantidad</label>
+            <div className="qty-control">
+              <button className="qty-btn" onClick={dec} aria-label="Restar">
+                −
               </button>
-            </>
-          ) : (
-            <p className="sin-stock" style={{ color: "#d32f2f", fontWeight: 700 }}>
-              Producto sin stock
-            </p>
-          )}
+              <input
+                className="qty-input"
+                type="number"
+                min={1}
+                value={qty}
+                onChange={(e) =>
+                  setQty(Math.max(1, Number(e.target.value) || 1))
+                }
+              />
+              <button className="qty-btn" onClick={inc} aria-label="Sumar">
+                +
+              </button>
+            </div>
+          </div>
+
+          <button className="btn-comprar" onClick={handleBuy}>
+            Comprar
+          </button>
         </aside>
       </div>
 
