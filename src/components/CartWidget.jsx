@@ -1,14 +1,11 @@
-import { Link } from "react-router-dom";
-import { useCart } from "../context/CartContext";
-import iconCart from "../assets/icono_carrito.png";
+import carrito from "../assets/icono_carrito.png";
+import user from "../assets/icono_user.png";
 
-export default function CartWidget() {
-  const { totalItems } = useCart();
-
+export function CartWidget() {
   return (
-    <Link to="/carrito" className="cart-widget" aria-label="Ir al carrito">
-      <img src={iconCart} alt="Carrito" className="cart-icon" />
-      {totalItems() > 0 && <span className="cart-count">{totalItems()}</span>}
-    </Link>
+    <div className="d-flex align-items-center gap-3">
+      <img src={carrito} alt="Carrito" className="icono-navbar" />
+      <img src={user} alt="Usuario" className="icono-navbar" />
+    </div>
   );
 }
