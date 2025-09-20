@@ -2,42 +2,60 @@ import { createContext, useContext, useState } from "react";
 
 const CartContext = createContext();
 
-export function useCart() {
-  return useContext(CartContext);
-}
-
 export function CartProvider({ children }) {
-  const [cart, setCart] = useState([]);
+  const [items, setItems] = useState([]);
+  const [totalPrice, setTotalPrice] = useState(0);
+  const [totalQuantity, setTotalQuantity] = useState(0);
 
-  function addItem(producto, cantidad) {
-    setCart((prev) => {
-      const existe = prev.find((p) => p.id === producto.id);
-      if (existe) {
-        return prev.map((p) =>
-          p.id === producto.id ? { ...p, cantidad: p.cantidad + cantidad } : p
-        );
-      } else {
-        return [...prev, { ...producto, cantidad }];
-      }
-    });
-  }
+  const addItemToCart = (producto, cantidad) => {
+    const itemExistente = items.find((item) => item.id === producto.id);
 
-  function removeItem(id) {
-    setCart((prev) => prev.filter((p) => p.id !== id));
-  }
+    let nuevosItems;
+    if (itemExistente) {
+      nuevosItems = items.map((item) =>
+        item.id === producto.id
+          ? { ...item, cantidad: item.cantidad + cantidad }
+          : item
+      );
+    } else {
+      nuevosItems = [...items, { ...producto, cantidad }];
+    }
 
-  function clearCart() {
-    setCart([]);
-  }
+    setItems(nuevosItems);
+    setTotalPrice(
+      nuevosItems.reduce((acc, item) => acc + item.precio * item.cantidad, 0)
+    );
+    setTotalQuantity(
+      nuevosItems.reduce((acc, item) => acc + item.cantidad, 0)
+    );
+  };
 
-  const totalUnidades = cart.reduce((acc, p) => acc + p.cantidad, 0);
-  const totalPrecio = cart.reduce((acc, p) => acc + p.cantidad * p.precio, 0);
+  const removeItemFromCart = (id) => {
+    const nuevosItems = items.filter((item) => item.id !== id);
+    setItems(nuevosItems);
+    setTotalPrice(
+      nuevosItems.reduce((acc, item) => acc + item.precio * item.cantidad, 0)
+    );
+    setTotalQuantity(
+      nuevosItems.reduce((acc, item) => acc + item.cantidad, 0)
+    );
+  };
+
+  const clearCart = () => {
+    setItems([]);
+    setTotalPrice(0);
+    setTotalQuantity(0);
+  };
 
   return (
     <CartContext.Provider
-      value={{ cart, addItem, removeItem, clearCart, totalUnidades, totalPrecio }}
+      value={{ items, totalPrice, totalQuantity, addItemToCart, removeItemFromCart, clearCart }}
     >
       {children}
     </CartContext.Provider>
   );
+}
+
+export function useCart() {
+  return useContext(CartContext);
 }
