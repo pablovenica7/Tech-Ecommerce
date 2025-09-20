@@ -8,7 +8,7 @@ function cap(text) {
   return text ? text.charAt(0).toUpperCase() + text.slice(1) : text;
 }
 
-export function ItemListContainer({ mensaje }) {
+export function ItemListContainer() {
   const { idCategoria } = useParams();
   const [productos, setProductos] = useState([]);
   const [cargando, setCargando] = useState(true);
