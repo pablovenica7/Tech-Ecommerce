@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ItemDetail } from "./ItemDetail";
-import { fetchProductById } from "../data/products";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../firebaseConfig";
 
 export function ItemDetailContainer() {
   const { idProducto } = useParams();
@@ -9,11 +10,25 @@ export function ItemDetailContainer() {
   const [cargando, setCargando] = useState(true);
 
   useEffect(() => {
-    setCargando(true);
-    fetchProductById(idProducto)
-      .then(setProducto)
-      .catch(() => setProducto(null))
-      .finally(() => setCargando(false));
+    const fetchProducto = async () => {
+      setCargando(true);
+      try {
+        const ref = doc(db, "products", idProducto);
+        const snapshot = await getDoc(ref);
+        if (snapshot.exists()) {
+          setProducto({ id: snapshot.id, ...snapshot.data() });
+        } else {
+          setProducto(null);
+        }
+      } catch (error) {
+        console.error("Error obteniendo producto:", error);
+        setProducto(null);
+      } finally {
+        setCargando(false);
+      }
+    };
+
+    fetchProducto();
   }, [idProducto]);
 
   if (cargando) {
@@ -28,7 +43,9 @@ export function ItemDetailContainer() {
     return (
       <main className="container py-5">
         <h2>Producto no encontrado</h2>
-        <p>Revisá el enlace o volvé al <a href="/catalogo">catálogo</a>.</p>
+        <p>
+          Revisá el enlace o volvé al <a href="/catalogo">catálogo</a>.
+        </p>
       </main>
     );
   }
