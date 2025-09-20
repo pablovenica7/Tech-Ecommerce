@@ -6,9 +6,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { CartProvider } from "./components/CartContext.jsx";
 import "./firebaseConfig";
-// import { uploadProducts } from "./data/uploadProducts"; 
-// ⚠️ Descomentar solo una vez para subir productos a Firestore
-// uploadProducts();
 
 const DOMElement = document.getElementById("root");
 const VDOMElement = createRoot(DOMElement);
