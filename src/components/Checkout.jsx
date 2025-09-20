@@ -1,14 +1,13 @@
 import { useState } from "react";
 import { useCart } from "../components/CartContext";
-import { getFirestore, collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { db } from "../firebaseConfig";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import Swal from "sweetalert2";
 
 export function Checkout() {
   const { cart, totalPrecio, clearCart } = useCart();
   const [form, setForm] = useState({ nombre: "", email: "", telefono: "" });
   const [loading, setLoading] = useState(false);
-
-  const db = getFirestore();
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -94,11 +93,7 @@ export function Checkout() {
           />
         </div>
         <div className="col-12 text-end">
-          <button
-            type="submit"
-            className="btn btn-success"
-            disabled={loading}
-          >
+          <button type="submit" className="btn btn-success" disabled={loading}>
             {loading ? "Procesando..." : "Comprar"}
           </button>
         </div>
