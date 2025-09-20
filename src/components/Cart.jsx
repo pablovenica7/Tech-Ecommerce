@@ -1,68 +1,74 @@
 import { useCart } from "../components/CartContext";
-import { Link } from "react-router-dom";
+import { db } from "../firebaseConfig";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import Swal from "sweetalert2";
 
 export function Cart() {
-  const { cart, removeItem, clearCart, totalUnidades, totalPrecio } = useCart();
+  const { items, totalPrice, clearCart } = useCart();
 
-  if (cart.length === 0) {
-    return (
-      <main className="container mt-5 pt-5 text-center">
-        <h2>Tu carrito está vacío</h2>
-        <Link to="/catalogo" className="btn btn-primary mt-3">
-          Ir al catálogo
-        </Link>
-      </main>
-    );
-  }
+  const handleFinalizarCompra = async () => {
+    if (items.length === 0) {
+      Swal.fire("Error", "El carrito está vacío", "error");
+      return;
+    }
+
+    const nuevaOrden = {
+      buyer: {
+        nombre: "Juan",
+        email: "juan@gmail.com",
+        telefono: "1234567890",
+      },
+      fecha: serverTimestamp(),
+      items: items.map((item) => ({
+        id: item.id,
+        nombre: item.nombre,
+        precio: item.precio,
+        cantidad: item.cantidad,
+      })),
+      total: totalPrice,
+    };
+
+    try {
+      const ordenesCollection = collection(db, "orders");
+      const docRef = await addDoc(ordenesCollection, nuevaOrden);
+
+      Swal.fire(
+        "Compra realizada",
+        `Tu ID de orden es: ${docRef.id}`,
+        "success"
+      );
+      clearCart();
+    } catch (error) {
+      Swal.fire("Error", "No se pudo finalizar la compra", "error");
+      console.error(error);
+    }
+  };
 
   return (
     <main className="container mt-5 pt-5">
-      <h2 className="mb-4">Carrito de Compras</h2>
-      <table className="table align-middle">
-        <thead>
-          <tr>
-            <th>Producto</th>
-            <th>Cantidad</th>
-            <th>Precio Unitario</th>
-            <th>Subtotal</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {cart.map((item) => (
-            <tr key={item.id}>
-              <td>{item.nombre}</td>
-              <td>{item.cantidad}</td>
-              <td>${item.precio.toLocaleString("es-AR")}</td>
-              <td>${(item.precio * item.cantidad).toLocaleString("es-AR")}</td>
-              <td>
-                <button
-                  className="btn btn-sm btn-danger"
-                  onClick={() => removeItem(item.id)}
-                >
-                  Eliminar
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <h2>Carrito de Compras</h2>
 
-      <div className="d-flex justify-content-between align-items-center mt-4">
-        <button className="btn btn-outline-danger" onClick={clearCart}>
-          Vaciar carrito
-        </button>
-        <div>
-          <h5>Total de unidades: {totalUnidades}</h5>
-          <h4>Total a pagar: ${totalPrecio.toLocaleString("es-AR")}</h4>
-        </div>
-      </div>
-
-      <div className="mt-4 text-end">
-        <Link to="/checkout" className="btn btn-success">
-          Finalizar compra
-        </Link>
-      </div>
+      {items.length === 0 ? (
+        <p>Tu carrito está vacío</p>
+      ) : (
+        <>
+          <ul className="list-group mb-3">
+            {items.map((item) => (
+              <li
+                key={item.id}
+                className="list-group-item d-flex justify-content-between align-items-center"
+              >
+                {item.nombre} x {item.cantidad}
+                <span>${(item.precio * item.cantidad).toLocaleString()}</span>
+              </li>
+            ))}
+          </ul>
+          <h4>Total: ${totalPrice.toLocaleString()}</h4>
+          <button className="btn btn-success mt-3" onClick={handleFinalizarCompra}>
+            Finalizar compra
+          </button>
+        </>
+      )}
     </main>
   );
 }
