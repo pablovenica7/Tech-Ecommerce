@@ -1,48 +1,7 @@
 import { useCart } from "../components/CartContext";
-import { db } from "../firebaseConfig";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
-import Swal from "sweetalert2";
 
 export function Cart() {
-  const { items, totalPrice, clearCart } = useCart();
-
-  const handleFinalizarCompra = async () => {
-    if (items.length === 0) {
-      Swal.fire("Error", "El carrito está vacío", "error");
-      return;
-    }
-
-    const nuevaOrden = {
-      buyer: {
-        nombre: "Juan",
-        email: "juan@gmail.com",
-        telefono: "1234567890",
-      },
-      fecha: serverTimestamp(),
-      items: items.map((item) => ({
-        id: item.id,
-        nombre: item.nombre,
-        precio: item.precio,
-        cantidad: item.cantidad,
-      })),
-      total: totalPrice,
-    };
-
-    try {
-      const ordenesCollection = collection(db, "orders");
-      const docRef = await addDoc(ordenesCollection, nuevaOrden);
-
-      Swal.fire(
-        "Compra realizada",
-        `Tu ID de orden es: ${docRef.id}`,
-        "success"
-      );
-      clearCart();
-    } catch (error) {
-      Swal.fire("Error", "No se pudo finalizar la compra", "error");
-      console.error(error);
-    }
-  };
+  const { items, totalPrice, addItemToCart, removeItemFromCart } = useCart();
 
   return (
     <main className="container mt-5 pt-5">
@@ -78,15 +37,34 @@ export function Cart() {
 
                 {/* Controles de cantidad */}
                 <div className="d-flex align-items-center gap-2">
-                  <button className="btn btn-outline-secondary btn-sm">−</button>
+                  <button
+                    className="btn btn-outline-secondary btn-sm"
+                    onClick={() => addItemToCart(item, -1)} // restar 1
+                  >
+                    −
+                  </button>
                   <span>{item.cantidad}</span>
-                  <button className="btn btn-outline-secondary btn-sm">+</button>
+                  <button
+                    className="btn btn-outline-secondary btn-sm"
+                    onClick={() => addItemToCart(item, 1)} // sumar 1
+                  >
+                    +
+                  </button>
                 </div>
 
                 {/* Subtotal */}
-                <div className="fw-bold">
+                <div className="fw-bold me-3">
                   ${(item.precio * item.cantidad).toLocaleString()}
                 </div>
+
+                {/* 🗑️ Botón eliminar */}
+                <button
+                  className="btn btn-link text-danger fs-5"
+                  onClick={() => removeItemFromCart(item.id)}
+                  title="Eliminar producto"
+                >
+                  🗑️
+                </button>
               </div>
             ))}
           </div>
@@ -104,14 +82,8 @@ export function Cart() {
                 <span>Total</span>
                 <span>${totalPrice.toLocaleString()}</span>
               </p>
-              <button
-                className="btn btn-primary w-100 mb-2"
-                onClick={handleFinalizarCompra}
-              >
-                Iniciar compra
-              </button>
-              <a href="/catalogo" className="btn btn-outline-secondary w-100">
-                Ver más productos
+              <a href="/checkout" className="btn btn-primary w-100">
+                Finalizar compra
               </a>
             </div>
           </aside>
