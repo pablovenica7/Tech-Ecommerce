@@ -8,13 +8,13 @@ export function ItemDetail({ producto }) {
   const { nombre, precio, descripcion, categoria, img, caracteristicas } = producto;
   const [qty, setQty] = useState(1);
   const [added, setAdded] = useState(false);
-  const { addItemToCart } = useCart();
+  const { addItemToCart } = useCart(); // ✅ corregido
 
   const dec = () => setQty((q) => Math.max(1, q - 1));
   const inc = () => setQty((q) => q + 1);
 
   const handleAdd = () => {
-    addItemToCart(producto, qty);
+    addItemToCart(producto, qty); // ✅ corregido
     setAdded(true);
     Swal.fire({
       icon: "success",
