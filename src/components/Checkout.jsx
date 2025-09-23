@@ -11,7 +11,6 @@ export function Checkout() {
   const [paymentMethod, setPaymentMethod] = useState("");
   const navigate = useNavigate();
 
-  // 🚨 Guard: si el carrito está vacío, redirigir al catálogo
   useEffect(() => {
     if (!items.length) navigate("/catalogo");
   }, [items, navigate]);
