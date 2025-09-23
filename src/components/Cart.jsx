@@ -1,4 +1,5 @@
 import { useCart } from "../components/CartContext";
+import { Link } from "react-router-dom";
 
 export function Cart() {
   const { items, totalPrice, addItemToCart, removeItemFromCart } = useCart();
@@ -75,9 +76,9 @@ export function Cart() {
                 <span>Total</span>
                 <span>${totalPrice.toLocaleString()}</span>
               </p>
-              <a href="/checkout" className="btn btn-primary w-100">
+              <Link to="/checkout" className="btn btn-primary w-100">
                 Continuar compra
-              </a>
+              </Link>
             </div>
           </aside>
         </div>
