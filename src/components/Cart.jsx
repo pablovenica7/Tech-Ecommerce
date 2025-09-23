@@ -35,14 +35,14 @@ export function Cart() {
                 <div className="d-flex align-items-center gap-2">
                   <button
                     className="btn btn-outline-secondary btn-sm"
-                    onClick={() => addItemToCart(item, -1)} // restar 1
+                    onClick={() => addItemToCart(item, -1)}
                   >
                     −
                   </button>
                   <span>{item.cantidad}</span>
                   <button
                     className="btn btn-outline-secondary btn-sm"
-                    onClick={() => addItemToCart(item, 1)} // sumar 1
+                    onClick={() => addItemToCart(item, 1)}
                   >
                     +
                   </button>
@@ -76,7 +76,7 @@ export function Cart() {
                 <span>${totalPrice.toLocaleString()}</span>
               </p>
               <a href="/checkout" className="btn btn-primary w-100">
-                Finalizar compra
+                Continuar con la compra
               </a>
             </div>
           </aside>
