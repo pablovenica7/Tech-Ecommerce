@@ -8,13 +8,13 @@ export function ItemDetail({ producto }) {
   const { nombre, precio, descripcion, categoria, img, caracteristicas } = producto;
   const [qty, setQty] = useState(1);
   const [added, setAdded] = useState(false);
-  const { addItemToCart } = useCart(); // ✅ corregido
+  const { addItemToCart } = useCart();
 
   const dec = () => setQty((q) => Math.max(1, q - 1));
   const inc = () => setQty((q) => q + 1);
 
   const handleAdd = () => {
-    addItemToCart(producto, qty); // ✅ corregido
+    addItemToCart(producto, qty);
     setAdded(true);
     Swal.fire({
       icon: "success",
@@ -31,26 +31,38 @@ export function ItemDetail({ producto }) {
         <h1 className="detalle-title">{nombre}</h1>
         <hr className="detalle-divider" />
       </div>
+
       <div className="detalle-top">
         <div className="detalle-imgbox">
           {img ? (
-            <img src={img} alt={nombre} className="detalle-img" />
+            <img
+              src={`/src/assets/${img}`}
+              alt={nombre}
+              className="detalle-img"
+            />
           ) : (
             <div className="detalle-img placeholder" />
           )}
         </div>
+
         <aside className="detalle-info">
           <span className="categoria-badge">{categoria}</span>
+
           <section className="precio-box-simple">
-            <div className="precio-monto">${precio.toLocaleString("es-AR")}</div>
+            <div className="precio-monto">
+              ${precio.toLocaleString("es-AR")}
+            </div>
             <div className="precio-metodo">
               Precio pagando en <strong>efectivo, transferencia bancaria o depósito</strong>
             </div>
             <div className="precio-sin-imp">
               Precio sin impuestos nacionales:{" "}
-              <strong>${Math.round(precio * 0.91).toLocaleString("es-AR")}</strong>
+              <strong>
+                ${Math.round(precio * 0.91).toLocaleString("es-AR")}
+              </strong>
             </div>
           </section>
+
           {!added ? (
             <div className="qty-row">
               <label className="qty-label">Cantidad</label>
@@ -61,7 +73,9 @@ export function ItemDetail({ producto }) {
                   type="number"
                   min={1}
                   value={qty}
-                  onChange={(e) => setQty(Math.max(1, Number(e.target.value) || 1))}
+                  onChange={(e) =>
+                    setQty(Math.max(1, Number(e.target.value) || 1))
+                  }
                 />
                 <button className="qty-btn" onClick={inc} aria-label="Sumar">+</button>
               </div>
@@ -76,6 +90,7 @@ export function ItemDetail({ producto }) {
           )}
         </aside>
       </div>
+
       {descripcion && (
         <>
           <hr className="detalle-divider" />
@@ -85,6 +100,7 @@ export function ItemDetail({ producto }) {
           </div>
         </>
       )}
+
       {caracteristicas && (
         <>
           <hr className="detalle-divider" />
