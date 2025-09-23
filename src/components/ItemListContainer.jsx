@@ -20,10 +20,16 @@ export function ItemListContainer() {
       setCargando(true);
       try {
         const querySnapshot = await getDocs(collection(db, "products"));
-        const productosFirestore = querySnapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
+        const productosFirestore = querySnapshot.docs.map((doc) => {
+          const producto = { id: doc.id, ...doc.data() };
+
+          if (producto.img?.startsWith("src/assets/")) {
+            producto.img = "/" + producto.img;
+          }
+
+          return producto;
+        });
+
         setProductos(productosFirestore);
         setCategoria(idCategoria ?? "todos");
       } catch (error) {
@@ -39,9 +45,10 @@ export function ItemListContainer() {
   const categorias = ["todos", ...Array.from(new Set(productos.map((p) => p.categoria)))];
 
   const filtrarYOrdenar = () => {
-    let lista = categoria === "todos"
-      ? [...productos]
-      : productos.filter((p) => p.categoria === categoria);
+    let lista =
+      categoria === "todos"
+        ? [...productos]
+        : productos.filter((p) => p.categoria === categoria);
 
     if (orden === "mayor") lista.sort((a, b) => b.precio - a.precio);
     if (orden === "menor") lista.sort((a, b) => a.precio - b.precio);
