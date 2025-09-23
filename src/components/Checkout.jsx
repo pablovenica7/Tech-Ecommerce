@@ -3,11 +3,13 @@ import { collection, addDoc } from "firebase/firestore";
 import { db } from "../firebaseConfig";
 import { useCart } from "./CartContext";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 export function Checkout() {
   const { items, totalPrice, clearCart } = useCart();
   const [buyer, setBuyer] = useState({ name: "", email: "", phone: "" });
   const [paymentMethod, setPaymentMethod] = useState("");
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setBuyer({
@@ -49,9 +51,13 @@ export function Checkout() {
           <p><small>Tu número de orden es:</small></p>
           <p style="font-size:14px; color:#2e7df6;"><b>${docRef.id}</b></p>
         `,
+        confirmButtonText: "Volver",
         confirmButtonColor: "orange",
       }).then(() => {
         clearCart();
+        setBuyer({ name: "", email: "", phone: "" }); 
+        setPaymentMethod("");
+        navigate("/");
       });
     } catch (error) {
       console.error("Error al registrar la orden:", error);
