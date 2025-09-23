@@ -1,54 +1,49 @@
-# 🛒 Tech-Ecommerce
+🛒 Tech-Ecommerce
 
-📌 Proyecto final del curso **ReactJS**: una aplicación web de tipo **e-commerce** desarrollada como  
-**Single Page Application (SPA)** con React. Incluye catálogo de productos, carrito de compras,  
-checkout y conexión a **Firebase Firestore**.  
+📌 Proyecto final del curso ReactJS: una aplicación web de tipo e-commerce desarrollada como
+Single Page Application (SPA) con React. Incluye catálogo de productos, carrito de compras,
+checkout y conexión a Firebase Firestore.
 
----
+🚀 Tecnologías utilizadas
 
-## 🚀 Tecnologías utilizadas
+⚛️ React + Vite
 
-- ⚛️ React + Vite  
-- 🌐 React Router DOM → navegación SPA  
-- 🎨 Bootstrap 5 + CSS personalizado  
-- 🔥 Firebase Firestore → base de datos y órdenes de compra  
-- 💬 SweetAlert2 → alertas interactivas  
-- 🛍️ Context API → manejo global del carrito  
+🌐 React Router DOM → navegación SPA
 
----
+🎨 Bootstrap 5 + CSS personalizado
 
-## 📂 Estructura del proyecto
+🔥 Firebase Firestore → base de datos y órdenes de compra
 
+💬 SweetAlert2 → alertas interactivas
+
+🛍️ Context API → manejo global del carrito
+
+📂 Estructura del proyecto
 src/
-├── assets/ # 📸 Imágenes e íconos
-├── components/ # 🧩 Componentes reutilizables (NavBar, Cart, Checkout, etc.)
-├── data/ # 🔗 Funciones de acceso a Firestore
-├── pages/ # 📄 Vistas principales (Home, Contacto)
-├── App.jsx # 📌 Rutas principales de la aplicación
-├── main.jsx # 🚀 Renderizado inicial con CartProvider
-└── index.css # 🎨 Estilos globales
+ ├── assets/        # 📸 Imágenes e íconos
+ ├── components/    # 🧩 Componentes reutilizables (NavBar, Cart, Checkout, etc.)
+ ├── data/          # 🔗 Funciones de acceso a Firestore
+ ├── pages/         # 📄 Vistas principales (Home, Contacto)
+ ├── App.jsx        # 📌 Rutas principales de la aplicación
+ ├── main.jsx       # 🚀 Renderizado inicial con CartProvider
+ └── index.css      # 🎨 Estilos globales
 
----
+⚙️ Requisitos previos
 
-## ⚙️ Requisitos previos
+📥 Instalar Node.js (v16 o superior recomendado).
+👉 Descargar Node.js
 
-- 📥 Instalar **Node.js** (v16 o superior recomendado).  
-  👉 [Descargar Node.js](https://nodejs.org/)  
+🔑 Tener una cuenta en Firebase con un proyecto configurado en Firestore.
 
-- 🔑 Tener una cuenta en **Firebase** con un proyecto configurado en **Firestore**.  
-
----
-
-## ▶️ Pasos para ejecutar el proyecto
-
-### 1️⃣ Clonar el repositorio
+▶️ Pasos para ejecutar el proyecto
+1️⃣ Clonar el repositorio
 git clone https://github.com/pablovenica7/Tech-Ecommerce.git
 cd Tech-Ecommerce
 
-### 2️⃣ Instalar dependencias
+2️⃣ Instalar dependencias
 npm install
 
-### 3️⃣ Configurar Firebase
+3️⃣ Configurar Firebase
 
 Este proyecto ya incluye las credenciales necesarias en firebaseConfig.js.
 El archivo está configurado así:
@@ -69,32 +64,37 @@ const firebaseConfig = {
 export const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 
-👉 Con estas credenciales, la app se conecta directamente a la base de datos en Firestore.
 
+👉 Con estas credenciales, la app se conecta directamente a la base de datos en Firestore.
 No es necesario crear un .env ni configurar nada extra.
 
-### 4️⃣ Ejecutar en modo desarrollo
+4️⃣ Ejecutar en modo desarrollo
 npm run dev
+
 👉 La app estará disponible en: http://localhost:5173
 
----
+5️⃣ Compilar para producción
+npm run build
 
-## ✨ Funcionalidades principales
+✨ Funcionalidades principales
 
 ✔️ Catálogo de productos dinámico desde Firestore
+
 ✔️ Filtro por categorías y orden de precios
+
 ✔️ Detalle de producto con ItemCount y control de stock
+
 ✔️ Carrito de compras con estado global (Context API)
+
 ✔️ Resumen de compra y Checkout
+
 ✔️ Creación de órdenes en Firestore con ID único
+
 ✔️ Validaciones: campos vacíos, carrito vacío, stock limitado
+
 ✔️ Alertas modernas con SweetAlert2
 
----
-
-## 👨‍💻 Autor
+👨‍💻 Autor
 
 Pablo Venica
 📅 Proyecto final de ReactJS – 2025
-
----
