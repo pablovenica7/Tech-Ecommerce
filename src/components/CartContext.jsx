@@ -7,26 +7,31 @@ export function CartProvider({ children }) {
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalQuantity, setTotalQuantity] = useState(0);
 
-  const addItemToCart = (producto, cantidad) => {
-    const itemExistente = items.find((item) => item.id === producto.id);
+  const addItemToCart = (producto, delta) => {
+    const stock = producto.stock ?? Infinity;
+    const existe = items.find((it) => it.id === producto.id);
 
     let nuevosItems;
-    if (itemExistente) {
-      nuevosItems = items.map((item) =>
-        item.id === producto.id
-          ? { ...item, cantidad: item.cantidad + cantidad }
-          : item
-      );
+    if (existe) {
+      const nuevaCant = Math.min(stock, Math.max(0, existe.cantidad + delta));
+      if (nuevaCant === 0) {
+        nuevosItems = items.filter((it) => it.id !== producto.id);
+      } else {
+        nuevosItems = items.map((it) =>
+          it.id === producto.id ? { ...it, cantidad: nuevaCant } : it
+        );
+      }
     } else {
-      nuevosItems = [...items, { ...producto, cantidad }];
+      const cantInicial = Math.min(stock, Math.max(1, delta));
+      nuevosItems = [...items, { ...producto, cantidad: cantInicial }];
     }
 
     setItems(nuevosItems);
     setTotalPrice(
-      nuevosItems.reduce((acc, item) => acc + item.precio * item.cantidad, 0)
+      nuevosItems.reduce((acc, it) => acc + it.precio * it.cantidad, 0)
     );
     setTotalQuantity(
-      nuevosItems.reduce((acc, item) => acc + item.cantidad, 0)
+      nuevosItems.reduce((acc, it) => acc + it.cantidad, 0)
     );
   };
 
@@ -34,10 +39,10 @@ export function CartProvider({ children }) {
     const nuevosItems = items.filter((item) => item.id !== id);
     setItems(nuevosItems);
     setTotalPrice(
-      nuevosItems.reduce((acc, item) => acc + item.precio * item.cantidad, 0)
+      nuevosItems.reduce((acc, it) => acc + it.precio * it.cantidad, 0)
     );
     setTotalQuantity(
-      nuevosItems.reduce((acc, item) => acc + item.cantidad, 0)
+      nuevosItems.reduce((acc, it) => acc + it.cantidad, 0)
     );
   };
 
@@ -49,7 +54,14 @@ export function CartProvider({ children }) {
 
   return (
     <CartContext.Provider
-      value={{ items, totalPrice, totalQuantity, addItemToCart, removeItemFromCart, clearCart }}
+      value={{
+        items,
+        totalPrice,
+        totalQuantity,
+        addItemToCart,
+        removeItemFromCart,
+        clearCart,
+      }}
     >
       {children}
     </CartContext.Provider>
