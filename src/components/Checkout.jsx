@@ -1,120 +1,91 @@
 import { useState } from "react";
-import { collection, addDoc } from "firebase/firestore";
-import { db } from "../firebaseConfig";
 import { useCart } from "./CartContext";
+import { db } from "../firebaseConfig";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import Swal from "sweetalert2";
 
 export function Checkout() {
   const { items, totalPrice, clearCart } = useCart();
-  const [buyer, setBuyer] = useState({ name: "", email: "", phone: "" });
-  const [paymentMethod, setPaymentMethod] = useState("");
+  const [metodoPago, setMetodoPago] = useState("");
 
-  const handleChange = (e) => {
-    setBuyer({
-      ...buyer,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    if (!buyer.name || !buyer.email || !buyer.phone || !paymentMethod) {
-      Swal.fire({
-        icon: "warning",
-        title: "Faltan datos",
-        text: "Por favor completa todos los campos antes de continuar",
-        confirmButtonColor: "orange",
-      });
+  const handleConfirmarCompra = async () => {
+    if (!metodoPago) {
+      Swal.fire("Error", "Selecciona un método de pago", "error");
       return;
     }
 
-    const order = {
-      buyer,
-      items,
+    if (items.length === 0) {
+      Swal.fire("Error", "El carrito está vacío", "error");
+      return;
+    }
+
+    const nuevaOrden = {
+      buyer: {
+        nombre: "Juan",
+        email: "juan@gmail.com",
+        telefono: "1234567890",
+      },
+      fecha: serverTimestamp(),
+      items: items.map((item) => ({
+        id: item.id,
+        nombre: item.nombre,
+        precio: item.precio,
+        cantidad: item.cantidad,
+      })),
       total: totalPrice,
-      paymentMethod,
-      date: new Date(),
+      metodoPago,
     };
 
     try {
-      const docRef = await addDoc(collection(db, "orders"), order);
-
-      clearCart();
+      const ordenesCollection = collection(db, "orders");
+      const docRef = await addDoc(ordenesCollection, nuevaOrden);
 
       Swal.fire({
         icon: "success",
-        title: "¡Compra realizada!",
+        title: "¡Gracias por tu compra!",
         html: `
-          <p>Gracias por tu compra, <b>${buyer.name}</b>.</p>
           <p>Total: <b>$${totalPrice.toLocaleString()}</b></p>
           <p><small>Tu número de orden es:</small></p>
           <p style="font-size:14px; color:#2e7df6;"><b>${docRef.id}</b></p>
         `,
         confirmButtonColor: "orange",
       });
+
+      clearCart();
     } catch (error) {
-      console.error("Error al registrar la orden:", error);
-      Swal.fire({
-        icon: "error",
-        title: "Error",
-        text: "No se pudo registrar tu compra. Intenta nuevamente.",
-        confirmButtonColor: "red",
-      });
+      Swal.fire("Error", "No se pudo generar la orden", "error");
+      console.error(error);
     }
   };
 
   return (
-    <main className="container py-5">
-      <h2>Checkout</h2>
-      <form onSubmit={handleSubmit} className="mt-4">
+    <main className="container mt-5 pt-5">
+      <h2 className="mb-4">Método de Pago</h2>
+
+      <div className="bg-white shadow-sm rounded p-4">
         <div className="mb-3">
-          <label className="form-label">Nombre</label>
-          <input
-            type="text"
-            className="form-control"
-            name="name"
-            value={buyer.name}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="mb-3">
-          <label className="form-label">Correo</label>
-          <input
-            type="email"
-            className="form-control"
-            name="email"
-            value={buyer.email}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="mb-3">
-          <label className="form-label">Teléfono</label>
-          <input
-            type="tel"
-            className="form-control"
-            name="phone"
-            value={buyer.phone}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="mb-3">
-          <label className="form-label">Método de pago</label>
+          <label className="form-label">Selecciona un método</label>
           <select
             className="form-select"
-            value={paymentMethod}
-            onChange={(e) => setPaymentMethod(e.target.value)}
+            value={metodoPago}
+            onChange={(e) => setMetodoPago(e.target.value)}
           >
-            <option value="">Selecciona un método</option>
-            <option value="efectivo">Efectivo</option>
-            <option value="tarjeta">Tarjeta</option>
-            <option value="transferencia">Transferencia bancaria</option>
+            <option value="">-- Elegir --</option>
+            <option value="Tarjeta">Tarjeta de crédito/débito</option>
+            <option value="Efectivo">Efectivo</option>
+            <option value="Transferencia">Transferencia bancaria</option>
           </select>
         </div>
-        <button type="submit" className="btn btn-primary">
+
+        <h4>Total: ${totalPrice.toLocaleString()}</h4>
+
+        <button
+          className="btn btn-success mt-3 w-100"
+          onClick={handleConfirmarCompra}
+        >
           Finalizar compra
         </button>
-      </form>
+      </div>
     </main>
   );
 }
