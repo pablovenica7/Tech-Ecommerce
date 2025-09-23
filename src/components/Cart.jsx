@@ -1,8 +1,22 @@
 import { useCart } from "../components/CartContext";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 export function Cart() {
   const { items, totalPrice, addItemToCart, removeItemFromCart } = useCart();
+
+  const handleAdd = (item) => {
+    if (item.cantidad < (item.stock ?? Infinity)) {
+      addItemToCart(item, 1);
+    } else {
+      Swal.fire({
+        icon: "warning",
+        title: "Stock máximo alcanzado",
+        text: `Solo hay ${item.stock} unidades disponibles de "${item.nombre}".`,
+        confirmButtonColor: "#ff7a1a",
+      });
+    }
+  };
 
   return (
     <main className="container mt-5 pt-5">
@@ -43,7 +57,7 @@ export function Cart() {
                   <span>{item.cantidad}</span>
                   <button
                     className="btn btn-outline-secondary btn-sm"
-                    onClick={() => addItemToCart(item, 1)}
+                    onClick={() => handleAdd(item)}
                   >
                     +
                   </button>
