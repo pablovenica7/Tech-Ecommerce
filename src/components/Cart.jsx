@@ -76,7 +76,7 @@ export function Cart() {
                 <span>${totalPrice.toLocaleString()}</span>
               </p>
               <a href="/checkout" className="btn btn-primary w-100">
-                Continuar con la compra
+                Continuar compra
               </a>
             </div>
           </aside>
