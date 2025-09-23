@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../firebaseConfig";
 import { useCart } from "./CartContext";
@@ -10,6 +10,11 @@ export function Checkout() {
   const [buyer, setBuyer] = useState({ name: "", email: "", phone: "" });
   const [paymentMethod, setPaymentMethod] = useState("");
   const navigate = useNavigate();
+
+  // 🚨 Guard: si el carrito está vacío, redirigir al catálogo
+  useEffect(() => {
+    if (!items.length) navigate("/catalogo");
+  }, [items, navigate]);
 
   const handleChange = (e) => {
     setBuyer({
@@ -55,7 +60,7 @@ export function Checkout() {
         confirmButtonColor: "orange",
       }).then(() => {
         clearCart();
-        setBuyer({ name: "", email: "", phone: "" }); 
+        setBuyer({ name: "", email: "", phone: "" });
         setPaymentMethod("");
         navigate("/");
       });
