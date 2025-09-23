@@ -23,26 +23,32 @@ export function ItemDetail({ producto }) {
     });
   };
 
+  const imagePath = img?.replace("src/assets/", "/src/assets/");
+
   return (
     <div className="detalle-container">
       <div className="detalle-header">
         <h1 className="detalle-title">{nombre}</h1>
         <hr className="detalle-divider" />
       </div>
+
       <div className="detalle-top">
         <div className="detalle-imgbox">
           {img ? (
-            <img src={img} alt={nombre} className="detalle-img" />
+            <img
+              src={imagePath}
+              alt={nombre}
+              className="detalle-img"
+            />
           ) : (
             <div className="detalle-img placeholder" />
           )}
         </div>
+
         <aside className="detalle-info">
           <span className="categoria-badge">{categoria}</span>
           <section className="precio-box-simple">
-            <div className="precio-monto">
-              ${precio.toLocaleString("es-AR")}
-            </div>
+            <div className="precio-monto">${precio.toLocaleString("es-AR")}</div>
             <div className="precio-metodo">
               Precio pagando en <strong>efectivo, transferencia bancaria o depósito</strong>
             </div>
@@ -61,9 +67,7 @@ export function ItemDetail({ producto }) {
                 type="number"
                 min={1}
                 value={qty}
-                onChange={(e) =>
-                  setQty(Math.max(1, Number(e.target.value) || 1))
-                }
+                onChange={(e) => setQty(Math.max(1, Number(e.target.value) || 1))}
               />
               <button className="qty-btn" onClick={inc} aria-label="Sumar">+</button>
             </div>
