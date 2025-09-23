@@ -1,23 +1,23 @@
 import { useState } from "react";
 import Swal from "sweetalert2";
 import { useCart } from "./CartContext";
+import { ItemCount } from "./ItemCount";
+import { Link } from "react-router-dom";
 
 export function ItemDetail({ producto }) {
   if (!producto) return null;
 
-  const { nombre, precio, descripcion, categoria, img, caracteristicas } = producto;
-  const [qty, setQty] = useState(1);
+  const { nombre, precio, descripcion, categoria, img, caracteristicas, stock } = producto;
   const { addItemToCart } = useCart();
+  const [added, setAdded] = useState(false);
 
-  const dec = () => setQty((q) => Math.max(1, q - 1));
-  const inc = () => setQty((q) => q + 1);
-
-  const handleAdd = () => {
-    addItemToCart(producto, qty);
+  const onAdd = (cantidad) => {
+    addItemToCart(producto, cantidad);
+    setAdded(true);
     Swal.fire({
       icon: "success",
       title: "¡Producto agregado!",
-      text: `Agregaste ${qty} unidad(es) de "${nombre}" al carrito.`,
+      text: `Agregaste ${cantidad} unidad(es) de "${nombre}" al carrito.`,
       confirmButtonText: "Listo",
       confirmButtonColor: "#ff7a1a",
     });
@@ -35,11 +35,7 @@ export function ItemDetail({ producto }) {
       <div className="detalle-top">
         <div className="detalle-imgbox">
           {img ? (
-            <img
-              src={imagePath}
-              alt={nombre}
-              className="detalle-img"
-            />
+            <img src={imagePath} alt={nombre} className="detalle-img" />
           ) : (
             <div className="detalle-img placeholder" />
           )}
@@ -48,7 +44,9 @@ export function ItemDetail({ producto }) {
         <aside className="detalle-info">
           <span className="categoria-badge">{categoria}</span>
           <section className="precio-box-simple">
-            <div className="precio-monto">${precio.toLocaleString("es-AR")}</div>
+            <div className="precio-monto">
+              ${precio.toLocaleString("es-AR")}
+            </div>
             <div className="precio-metodo">
               Precio pagando en <strong>efectivo, transferencia bancaria o depósito</strong>
             </div>
@@ -58,22 +56,25 @@ export function ItemDetail({ producto }) {
             </div>
           </section>
 
-          <div className="qty-row">
-            <label className="qty-label">Cantidad</label>
-            <div className="qty-control">
-              <button className="qty-btn" onClick={dec} aria-label="Restar">−</button>
-              <input
-                className="qty-input"
-                type="number"
-                min={1}
-                value={qty}
-                onChange={(e) => setQty(Math.max(1, Number(e.target.value) || 1))}
-              />
-              <button className="qty-btn" onClick={inc} aria-label="Sumar">+</button>
-            </div>
-            <button className="btn-comprar" onClick={handleAdd}>
-              Agregar al carrito
-            </button>
+          <div className="qty-row mt-3">
+            {!stock || stock <= 0 ? (
+              <p className="text-danger fw-semibold">Producto sin stock</p>
+            ) : !added ? (
+              <>
+                <ItemCount stock={stock} initial={1} onAdd={onAdd} />
+                <p className="text-muted mt-2">Stock disponible: {stock} unidades</p>
+              </>
+            ) : (
+              <div className="d-grid gap-2">
+                <Link className="btn btn-dark" to="/cart">
+                  Ir al carrito
+                </Link>
+                <Link className="btn btn-outline-secondary" to="/catalogo">
+                  Seguir comprando
+                </Link>
+                <p className="text-muted mt-2">Stock disponible: {stock} unidades</p>
+              </div>
+            )}
           </div>
         </aside>
       </div>
