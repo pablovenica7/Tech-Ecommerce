@@ -20,15 +20,10 @@ export function ItemListContainer() {
       setCargando(true);
       try {
         const querySnapshot = await getDocs(collection(db, "products"));
-        const productosFirestore = querySnapshot.docs.map((doc) => {
-          const producto = { id: doc.id, ...doc.data() };
-
-          if (producto.img?.startsWith("src/assets/")) {
-            producto.img = "/" + producto.img;
-          }
-
-          return producto;
-        });
+        const productosFirestore = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
 
         setProductos(productosFirestore);
         setCategoria(idCategoria ?? "todos");
