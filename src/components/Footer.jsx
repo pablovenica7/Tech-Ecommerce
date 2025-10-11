@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
-import logoFacebook from "../assets/logo_facebook.svg";
-import logoInstagram from "../assets/logo_instagram.svg";
 
 export function Footer() {
+  const logoInstagram = "/assets/logo_instagram.svg";
+  const logoFacebook = "/assets/logo_facebook.svg";
+
   return (
     <footer className="py-5">
       <div className="row container mx-auto">
@@ -59,12 +60,24 @@ export function Footer() {
         <p>© 2025 VEYOR, Inc. Todos los derechos reservados.</p>
         <ul className="list-unstyled d-flex">
           <li className="ms-3">
-            <a className="link-body-emphasis" href="https://www.instagram.com" aria-label="Instagram" target="_blank" rel="noreferrer">
+            <a
+              className="link-body-emphasis"
+              href="https://www.instagram.com"
+              aria-label="Instagram"
+              target="_blank"
+              rel="noreferrer"
+            >
               <img src={logoInstagram} alt="Instagram" className="footer-icon" />
             </a>
           </li>
           <li className="ms-3">
-            <a className="link-body-emphasis" href="https://www.facebook.com" aria-label="Facebook" target="_blank" rel="noreferrer">
+            <a
+              className="link-body-emphasis"
+              href="https://www.facebook.com"
+              aria-label="Facebook"
+              target="_blank"
+              rel="noreferrer"
+            >
               <img src={logoFacebook} alt="Facebook" className="footer-icon" />
             </a>
           </li>
