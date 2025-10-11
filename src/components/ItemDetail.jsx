@@ -23,7 +23,6 @@ export function ItemDetail({ producto }) {
     });
   };
 
-  // ✅ Las imágenes están en /public/assets/, por lo que se usan directamente
   const imagePath = img;
 
   return (
@@ -108,3 +107,4 @@ export function ItemDetail({ producto }) {
     </div>
   );
 }
+
