@@ -1,7 +1,6 @@
 # 🛒 VEYOR - E-commerce
 
 🌐 **Visita el sitio:** [techecommerce-veyor.netlify.app](https://techecommerce-veyor.netlify.app/)  
-💻 **Repositorio en GitHub:** [github.com/pablovenica7/Tech-Ecommerce](https://github.com/pablovenica7/Tech-Ecommerce)
 
 ---
 
