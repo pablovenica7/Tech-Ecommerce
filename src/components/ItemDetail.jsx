@@ -23,7 +23,7 @@ export function ItemDetail({ producto }) {
     });
   };
 
-  const imagePath = img?.replace("src/assets/", "/src/assets/");
+  const imagePath = img;
 
   return (
     <div className="detalle-container">
@@ -108,3 +108,4 @@ export function ItemDetail({ producto }) {
     </div>
   );
 }
+
