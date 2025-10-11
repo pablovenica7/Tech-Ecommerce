@@ -1,8 +1,9 @@
 import "./Home.css";
-import personas from "../assets/img-home.png";
 import { Link } from "react-router-dom";
 
 export function Home() {
+  const personas = "/assets/img-home.png";
+
   return (
     <main className="hero-section fade-in">
       <div className="hero-text">
@@ -16,8 +17,13 @@ export function Home() {
           <button className="btn-cta">Ver catálogo de productos</button>
         </Link>
       </div>
+
       <div className="hero-image">
-        <img src={personas} alt="Personas usando computadoras" className="hero-img" />
+        <img
+          src={personas}
+          alt="Personas usando computadoras"
+          className="hero-img"
+        />
       </div>
     </main>
   );
