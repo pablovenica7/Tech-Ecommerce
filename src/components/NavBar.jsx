@@ -12,7 +12,6 @@ export function NavBar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // ✅ Ruta directa desde /public/assets/
   const logo = "/assets/logo_navbar.png";
 
   return (
@@ -95,3 +94,4 @@ export function NavBar() {
     </nav>
   );
 }
+
