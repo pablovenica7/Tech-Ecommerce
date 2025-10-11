@@ -1,9 +1,10 @@
-import carrito from "../assets/icono_carrito.png";
 import { useCart } from "./CartContext";
 import { Link } from "react-router-dom";
 
 export function CartWidget() {
   const { totalQuantity } = useCart();
+
+  const carrito = "/assets/icono_carrito.png";
 
   return (
     <Link to="/cart" className="position-relative">
