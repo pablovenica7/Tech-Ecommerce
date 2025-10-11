@@ -23,6 +23,7 @@ export function ItemDetail({ producto }) {
     });
   };
 
+  // ✅ Las imágenes están en /public/assets/, por lo que se usan directamente
   const imagePath = img;
 
   return (
@@ -43,10 +44,9 @@ export function ItemDetail({ producto }) {
 
         <aside className="detalle-info">
           <span className="categoria-badge">{categoria}</span>
+
           <section className="precio-box-simple">
-            <div className="precio-monto">
-              ${precio.toLocaleString("es-AR")}
-            </div>
+            <div className="precio-monto">${precio.toLocaleString("es-AR")}</div>
             <div className="precio-metodo">
               Precio pagando en <strong>efectivo, transferencia bancaria o depósito</strong>
             </div>
@@ -108,4 +108,3 @@ export function ItemDetail({ producto }) {
     </div>
   );
 }
-
